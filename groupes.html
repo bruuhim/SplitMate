@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>SplitMate | Groupes &amp; membres</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="flex h-screen bg-gray-100">
+      <!-- Sidebar -->
+      <aside class="flex w-64 flex-col bg-slate-900 p-4 text-white">
+        <div>
+          <span>SplitMate</span>
+        </div>
+
+        <p>ESPACE DE TRAVAIL</p>
+
+        <nav>
+          <button type="button">
+            <i
+              class="fa-solid fa-border-all"
+              style="color: rgb(116, 192, 252)"
+            ></i>
+            <span>Tableau de bord</span>
+          </button>
+
+          <button type="button">
+            <i
+              class="fa-solid fa-clipboard-user"
+              style="color: rgb(116, 192, 252)"
+            ></i>
+            <span>Groupes &amp; membres</span>
+          </button>
+
+          <button type="button">
+            <i class="fa-solid fa-list" style="color: rgb(116, 192, 252)"></i>
+            <span>Dépenses &amp; soldes</span>
+          </button>
+        </nav>
+
+        <div>
+          <div></div>
+          <p>Voyage à Lisbonne</p>
+          <p>5 membres · 1 840 €</p>
+          <button type="button">Voir le groupe</button>
+        </div>
+
+        <div>
+          <div>
+            <span>AM</span>
+          </div>
+
+          <strong>Mon compte</strong>
+          <span>Profil personnel</span>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <div class="flex-1 flex flex-col">
+        <header
+          class="h-16 bg-white border-b flex items-center justify-between px-8 py-4"
+        >
+          <div class="invisible">
+            <p>Groups &amp; Members</p>
+          </div>
+
+          <div
+            class="flex items-center gap-2 cursor-pointer hover:bg-slate-100 p-2 rounded-lg transition-colors"
+          >
+            <div
+              class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#EAF2FF] text-blue-700 font-bold"
+            >
+              <span>AM</span>
+            </div>
+
+            <div class="flex flex-col leading-tight">
+              <p class="font-medium text-slate-900 text-sm">Mon compte</p>
+              <small class="text-[#6C757D] text-xs -mt-0.5"
+                >Espace personnel</small
+              >
+            </div>
+          </div>
+        </header>
+
+        <main class="p-8">
+          <section class="flex justify-between items-center">
+            <div>
+              <h1 class="text-2xl font-bold text-gray-900">
+                Groups &amp; Members
+              </h1>
+              <p class="text-sm text-gray-500">
+                Manage your shared spaces and the people in them.
+              </p>
+            </div>
+
+            <button
+              type="button"
+              class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium shadow-sm transition flex items-center gap-2"
+            >
+              + Create Group
+            </button>
+          </section>
+
+          <section class="flex justify-between items-center">
+            <div>
+              <h2>Your groups (3)</h2>
+            </div>
+
+            <div>
+              <input
+                type="search"
+                class="search-box"
+                placeholder="Search groups or members"
+              />
+            </div>
+          </section>
+
+          <!-- Groups -->
+          <section class="grid grid-cols-3 gap-6">
+            <div
+              class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm flex items-center gap-4"
+            >
+              <div>
+                <img src="assets/Folder.svg" alt="Folder Icon" />
+              </div>
+
+              <div>
+                <span class="font-semibold text-gray-900">Weekend Trip</span>
+                <p class="text-sm text-gray-500">4 members</p>
+              </div>
+            </div>
+
+            <div
+              class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm"
+            >
+              <div>
+                <img src="assets/Folder.svg" alt="Folder Icon" />
+              </div>
+
+              <div>
+                <span>Apartment</span>
+                <p>3 members</p>
+              </div>
+            </div>
+
+            <div>
+              <div>
+                <img src="assets/Folder.svg" alt="Folder Icon" />
+              </div>
+
+              <div>
+                <span>Dinner Club</span>
+                <p>3 members</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Members -->
+          <section>
+            <div>
+              <div>
+                <h2>Members</h2>
+                <p>4 people across your groups, including you.</p>
+              </div>
+
+              <button type="button">+ Add Member</button>
+            </div>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Group</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>
+                    <span>AM</span>
+                    <span>Alex Morgan (you)</span>
+                  </td>
+
+                  <td>alex.morgan@email.com</td>
+
+                  <td>Weekend Trip, Apartment, Dinner Club</td>
+
+                  <td>
+                    <a href="#">Edit</a>
+                    <a href="#">Remove</a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <span>JC</span>
+                    <span>Jamie Chen</span>
+                  </td>
+
+                  <td>jamie.chen@email.com</td>
+
+                  <td>Weekend Trip, Apartment, Dinner Club</td>
+
+                  <td>
+                    <a href="#">Edit</a>
+                    <a href="#">Remove</a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <span>SP</span>
+                    <span>Sam Patel</span>
+                  </td>
+
+                  <td>sam.patel@email.com</td>
+
+                  <td>Weekend Trip, Apartment</td>
+
+                  <td>
+                    <a href="#">Edit</a>
+                    <a href="#">Remove</a>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <span>TR</span>
+                    <span>Taylor Reed</span>
+                  </td>
+
+                  <td>taylor.reed@email.com</td>
+
+                  <td>Weekend Trip, Dinner Club</td>
+
+                  <td>
+                    <a href="#">Edit</a>
+                    <a href="#">Remove</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <!-- Modals -->
+          <section>
+            <article>
+              <div>
+                <h3>Create group</h3>
+                <button type="button" aria-label="Close">✕</button>
+              </div>
+
+              <form>
+                <div>
+                  <label for="group-name">Group name</label>
+
+                  <input
+                    type="text"
+                    id="group-name"
+                    name="groupName"
+                    placeholder="e.g. Summer vacation"
+                  />
+                </div>
+
+                <div>
+                  <label for="group-members">Members</label>
+
+                  <select id="group-members" name="members">
+                    <option value="" disabled selected>Select members</option>
+                    <option value="alex">Alex Morgan</option>
+                    <option value="jamie">Jamie Chen</option>
+                    <option value="sam">Sam Patel</option>
+                    <option value="taylor">Taylor Reed</option>
+                  </select>
+                </div>
+
+                <p>You'll be added to the group automatically.</p>
+
+                <div>
+                  <button type="submit">Create Group</button>
+                  <button type="button">Cancel</button>
+                </div>
+              </form>
+            </article>
+
+            <article>
+              <div>
+                <h3>Add / edit member</h3>
+                <button type="button" aria-label="Close">✕</button>
+              </div>
+
+              <form>
+                <div>
+                  <div>
+                    <label for="member-name">Full name</label>
+
+                    <input
+                      type="text"
+                      id="member-name"
+                      name="fullName"
+                      placeholder="Enter full name"
+                    />
+                  </div>
+
+                  <div>
+                    <label for="member-email">Email address</label>
+
+                    <input
+                      type="email"
+                      id="member-email"
+                      name="email"
+                      placeholder="name@email.com"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="member-groups">Groups joined</label>
+
+                  <select id="member-groups" name="groupsJoined">
+                    <option value="" disabled selected>Select groups</option>
+                    <option value="weekend">Weekend Trip</option>
+                    <option value="apartment">Apartment</option>
+                    <option value="dinner">Dinner Club</option>
+                  </select>
+                </div>
+
+                <p>Choose one or more groups for this member.</p>
+
+                <div>
+                  <button type="submit">Save Member</button>
+                  <button type="button">Cancel</button>
+                </div>
+              </form>
+            </article>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
