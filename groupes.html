@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,7 +15,7 @@
   </head>
 
   <body>
-    <div class="flex h-screen bg-gray-100">
+    <div class="flex min-h-screen bg-gray-100">
       <!-- Sidebar -->
       <aside class="flex w-64 flex-col bg-slate-900 p-4 text-white">
         <div>
@@ -77,7 +77,7 @@
             class="flex items-center gap-2 cursor-pointer hover:bg-slate-100 p-2 rounded-lg transition-colors"
           >
             <div
-              class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#EAF2FF] text-blue-700 font-bold"
+              class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-blue-100 text-blue-700 text-xs font-semibold mr-3 align-middle"
             >
               <span>AM</span>
             </div>
@@ -91,7 +91,7 @@
           </div>
         </header>
 
-        <main class="p-8">
+        <main class="flex-1 bg-gray-100 p-8">
           <section class="flex justify-between items-center">
             <div>
               <h1 class="text-2xl font-bold text-gray-900">
@@ -110,22 +110,23 @@
             </button>
           </section>
 
-          <section class="flex justify-between items-center">
+          <section class="mt-8 flex justify-between items-center">
             <div>
-              <h2>Your groups (3)</h2>
+              <h2 class="font-semibold text-lg">Your groups (3)</h2>
             </div>
 
             <div>
               <input
                 type="search"
-                class="search-box"
+                id="search-box"
+                class="w-64 h-10 border rounded-lg bg-white border-gray-200 text-gray-700 px-3 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
                 placeholder="Search groups or members"
               />
             </div>
           </section>
 
           <!-- Groups -->
-          <section class="grid grid-cols-3 gap-6">
+          <section class="mt-8 grid grid-cols-3 gap-6">
             <div
               class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm flex items-center gap-4"
             >
@@ -165,40 +166,63 @@
           </section>
 
           <!-- Members -->
-          <section>
-            <div>
+          <section
+            class="mt-8 bg-white border border-gray-200 rounded-xl shadow-sm flex flex-col"
+          >
+            <div
+              class="flex justify-between items-center p-6 border-b border-gray-200"
+            >
               <div>
-                <h2>Members</h2>
-                <p>4 people across your groups, including you.</p>
+                <h2 class="font-semibold text-lg">Members</h2>
+                <p class="text-sm text-gray-500">
+                  4 people across your groups, including you.
+                </p>
               </div>
-
-              <button type="button">+ Add Member</button>
+              <button
+                type="button"
+                class="border border-gray-300 bg-white hover:bg-gray-50 text-gray-800 text-sm font-medium px-4 py-2 rounded-md transition-colors mr-8"
+              >
+                + Add Member
+              </button>
             </div>
 
-            <table>
-              <thead>
+            <table class="w-full text-left border-collapse">
+              <thead class="bg-[#F8F9FA] text-gray-600 font-medium">
                 <tr>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Group</th>
-                  <th>Actions</th>
+                  <th class="py-3 px-6">Name</th>
+                  <th class="py-3 px-6">Email</th>
+                  <th class="py-3 px-6">Group</th>
+                  <th class="py-3 px-6">Actions</th>
                 </tr>
               </thead>
 
               <tbody>
                 <tr>
-                  <td>
-                    <span>AM</span>
-                    <span>Alex Morgan (you)</span>
+                  <td class="py-3 px-6">
+                    <span
+                      class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-blue-100 text-blue-700 text-xs font-semibold mr-3 align-middle"
+                      >AM</span
+                    >
+                    <span>Alex Morgan</span>
                   </td>
 
-                  <td>alex.morgan@email.com</td>
+                  <td class="py-3 px-6 text-gray-500">alex.morgan@email.com</td>
 
-                  <td>Weekend Trip, Apartment, Dinner Club</td>
+                  <td class="py-3 px-6">
+                    Weekend Trip, Apartment, Dinner Club
+                  </td>
 
-                  <td>
-                    <a href="#">Edit</a>
-                    <a href="#">Remove</a>
+                  <td class="py-3 px-6">
+                    <a
+                      href="#"
+                      class="text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors"
+                      >Edit</a
+                    >
+                    <a
+                      href="#"
+                      class="ml-4 text-sm font-medium text-red-600 hover:text-red-800 transition-colors"
+                      >Remove</a
+                    >
                   </td>
                 </tr>
 
@@ -235,16 +259,16 @@
                 </tr>
 
                 <tr>
-                  <td>
+                  <td class="py-3 px-6">
                     <span>TR</span>
                     <span>Taylor Reed</span>
                   </td>
 
-                  <td>taylor.reed@email.com</td>
+                  <td class="py-3 px-6">taylor.reed@email.com</td>
 
-                  <td>Weekend Trip, Dinner Club</td>
+                  <td class="py-3 px-6">Weekend Trip, Dinner Club</td>
 
-                  <td>
+                  <td class="py-3 px-6">
                     <a href="#">Edit</a>
                     <a href="#">Remove</a>
                   </td>
@@ -254,29 +278,43 @@
           </section>
 
           <!-- Modals -->
-          <section>
-            <article>
+          <section class="w-full flex items-stretch mt-8 gap-6">
+            <article
+              class="h-full flex-1 min-w-0 bg-white border border-gray-200 rounded-xl shadow-sm flex flex-col overflow-hidden p-6 gap-2"
+            >
               <div>
-                <h3>Create group</h3>
-                <button type="button" aria-label="Close">✕</button>
+                <h3 class="font-semibold text-lg mb-6">Create group</h3>
               </div>
 
-              <form>
-                <div>
-                  <label for="group-name">Group name</label>
+              <form class="space-y-4">
+                <div class="flex flex-col gap-2">
+                  <label
+                    for="group-name"
+                    class="text-xs font-medium text-gray-800"
+                    >Group name</label
+                  >
 
                   <input
                     type="text"
                     id="group-name"
                     name="groupName"
                     placeholder="e.g. Summer vacation"
+                    class="w-full h-10 border border-gray-300 rounded-md bg-white px-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
                   />
                 </div>
 
-                <div>
-                  <label for="group-members">Members</label>
+                <div class="flex flex-col gap-2">
+                  <label
+                    for="group-members"
+                    class="text-xs font-medium text-gray-800"
+                    >Members</label
+                  >
 
-                  <select id="group-members" name="members">
+                  <select
+                    id="group-members"
+                    name="members"
+                    class="w-full h-10 border border-gray-300 rounded-md bg-white px-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
+                  >
                     <option value="" disabled selected>Select members</option>
                     <option value="alex">Alex Morgan</option>
                     <option value="jamie">Jamie Chen</option>
@@ -285,50 +323,81 @@
                   </select>
                 </div>
 
-                <p>You'll be added to the group automatically.</p>
+                <p class="text-xs text-gray-500">
+                  You'll be added to the group automatically.
+                </p>
 
-                <div>
-                  <button type="submit">Create Group</button>
-                  <button type="button">Cancel</button>
+                <div class="flex items-center gap-2 pt-1">
+                  <button
+                    type="submit"
+                    class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-md transition-colors"
+                  >
+                    Create Group
+                  </button>
+                  <button
+                    type="button"
+                    class="border border-gray-300 bg-white hover:bg-gray-50 text-gray-800 text-sm font-medium px-4 py-2 rounded-md transition-colors"
+                  >
+                    Cancel
+                  </button>
                 </div>
               </form>
             </article>
 
-            <article>
+            <article
+              class="flex-1 min-w-0 bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden p-6"
+            >
               <div>
-                <h3>Add / edit member</h3>
-                <button type="button" aria-label="Close">✕</button>
+                <h3 class="font-semibold text-lg mb-6">Add / edit member</h3>
               </div>
 
               <form>
-                <div>
-                  <div>
-                    <label for="member-name">Full name</label>
+                <div class="flex gap-4 mb-4">
+                  <div class="flex flex-col flex-1 min-w-0 gap-2">
+                    <label
+                      for="member-name"
+                      class="text-xs font-medium text-gray-800"
+                      >Full name</label
+                    >
 
                     <input
                       type="text"
                       id="member-name"
                       name="fullName"
                       placeholder="Enter full name"
+                      class="w-full h-10 border border-gray-300 rounded-md bg-white px-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
                     />
                   </div>
 
-                  <div>
-                    <label for="member-email">Email address</label>
+                  <div class="flex flex-col flex-1 min-w-0 gap-2">
+                    <label
+                      for="member-email"
+                      class="text-xs font-medium text-gray-800"
+                      >Email address</label
+                    >
 
                     <input
                       type="email"
                       id="member-email"
                       name="email"
                       placeholder="name@email.com"
+                      class="w-full h-10 border border-gray-300 rounded-md bg-white px-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
                     />
                   </div>
                 </div>
 
-                <div>
-                  <label for="member-groups">Groups joined</label>
+                <div class="flex flex-col gap-2 mb-4">
+                  <label
+                    for="member-groups"
+                    class="text-xs font-medium text-gray-800"
+                    >Groups joined</label
+                  >
 
-                  <select id="member-groups" name="groupsJoined">
+                  <select
+                    id="member-groups"
+                    name="groupsJoined"
+                    class="w-full h-10 border border-gray-300 rounded-md bg-white px-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
+                  >
                     <option value="" disabled selected>Select groups</option>
                     <option value="weekend">Weekend Trip</option>
                     <option value="apartment">Apartment</option>
@@ -336,11 +405,23 @@
                   </select>
                 </div>
 
-                <p>Choose one or more groups for this member.</p>
+                <p class="text-xs text-gray-500 mb-4">
+                  Choose one or more groups for this member.
+                </p>
 
-                <div>
-                  <button type="submit">Save Member</button>
-                  <button type="button">Cancel</button>
+                <div class="flex items-center gap-2">
+                  <button
+                    type="submit"
+                    class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-md transition-colors"
+                  >
+                    Save Member
+                  </button>
+                  <button
+                    type="button"
+                    class="border border-gray-300 bg-white hover:bg-gray-50 text-gray-800 text-sm font-medium px-4 py-2 rounded-md transition-colors"
+                  >
+                    Cancel
+                  </button>
                 </div>
               </form>
             </article>
