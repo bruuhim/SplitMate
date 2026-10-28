@@ -1,4 +1,16 @@
 *{
+
+
+}
+.headers{
+    display: flex;
+    justify-content: end;
+}
+.sidebar{
+
+    
+  display:column;
+  justify-content: flex-start;
     
 
 }

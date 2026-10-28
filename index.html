@@ -4,42 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SplitMate</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <div>
+        <!-- <img src="logo6sp.jpg.png"> -->
+        <title>
+            table de bord
+        </title>
+    </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
 </head>
 
-<body>
-    <header>
-      <div  _class="icon-header">
-        <button><i></i></button>
-      </div>
-      <div class="conte">
-        <avatar> </avatar>
-        <strong>Mon compte</strong>
-        <span>espace personnel </span>
-      </div>
-    </header>
-    
-        <aside class="sidebar">
+<body class="m-0 bg-[#F3F5FB]">
+
+    <!-- --------------------sidebar------------------------ -------->
+
+    <div class="flex min-h-screen">
+        <aside
+            class="relative z-20 w-64 shrink-0 min-h-screen bg-slate-900 text-white p-5 flex flex-col gap-6 rounded-4xl">
+            <!-- <aside class="w-64 min-h-screen bg-slate-900 text-white p-5 flex flex-col gap-6 rounded-3xl   "> -->
             <div class="logo-area">
-                <img src="imagicon.jpg.png" alt="logo de splitMate">
+                <img src=" splotMatlogo-sp.jpg.png " alt="logo de splitMate">
                 <span class="bigTitre"> SplitMate</span>
             </div>
 
             <p class="section-titre">ESPACE DE TRAVAIL</p>
 
-            <nav class="sidebar-nav">
+            <nav>
+                <div class="flex flex-col gap-3 w-full">
 
-              <button  class="nav-item"><i class="fa-solid fa-border-all" style="color: rgb(116, 192, 252);"></i><span>Tableau de bord</span></button>
-                <button  class="nav-item"><i class="fa-solid fa-clipboard-user" style="color: rgb(116, 192, 252);"></i><span>Groupes & membres</span></button>
-                <button  class="nav-item"><i class="fa-solid fa-list" style="color: rgb(116, 192, 252);"></i><span>Dépenses & soldes</span></button>
+                    <button class="w-full py-3 bg-blue-600 text-white rounded"><i class="fa-solid fa-border-all"
+                            style="color: rgb(116, 192, 252);"></i><span>Tableau de bord</span></button>
+                    <button class="w-full py-3 bg-blue-600 text-white rounded"><i class="fa-solid fa-clipboard-user"
+                            style="color: rgb(116, 192, 252);"></i><span>Groupes & membres</span></button>
+                    <button class="w-full py-3 bg-blue-600 text-white rounded"><i class="fa-solid fa-list"
+                            style="color: rgb(116, 192, 252);"></i><span>Dépenses &
+                            soldes</span></button>
 
             </nav>
 
+
+
             <div class="group-box">
-                 <div></div>
-                <p>Voyage à Lisbonne</p>
+                <div></div>
+                <p>Week-end à Marrakech</p>
                 <p>5 membres · 1 840 €</p>
                 <button type="button">Voir le groupe</button>
             </div>
@@ -51,22 +62,123 @@
             </div>
         </aside>
 
-    <main>
- <section class="Tableau-de-bord">
-     
-    <div class="dashbord">
-        <div les-titre>
-            <p>VUE D’ENSEMBLE</p>
-            <h1>Tableau de bord</h1>
-            <p
 
+        <div class="relative z-0 flex-1 min-w-0 flex flex-col bg-white">
+            <!-- <div class="flex-1 min-w-0 flex flex-col bg-white"> -->
+
+            <header class="relative z-10 h-16 w-full bg-white shadow flex items-center justify-between px-6">
+                <!-- <header class="h-16 w-full bg-white shadow flex items-center justify-between px-6"> -->
+                <div>
+                    <button><i></i></button>
+                </div>
+                <div class="conte">
+                    <avatar> </avatar>
+                    <strong>Mon compte</strong>
+                    <span>espace personnel </span>
+                </div>
+            </header>
+            <!-- class="text-blue-600 font-bold font-['DM_Sans']" -->
+
+            <main class="ml-7 mt-7  mr-7 ">
+                <section class="Tableau-de-bord">
+
+                    <div class="flex  justify-between">
+                        <div les-titre>
+                            <p class="text-blue-600 font-bold font-dm">VUE D’ENSEMBLE</p>
+                            <h1 class="font-bold font-['Plus_Jakarta_sans']">Tableau de bord</h1>
+                            <p>Retrouvez simplement vos dépenses partagées.</p>
+                        </div>
+                        <div flex items-end>
+
+                            <i class="fa-solid fa-plus" style="color: rgb(116, 192, 252);"></i>
+                            <button flex flex-end>Ajouter une dépense</button>
+                        </div>
+                    </div>
+
+
+                    <div>
+
+                        <div class="flex mt-8 ">
+
+                            <article
+                                class="flex h-45 W-20 shrink-0 items-center justify-center rounded-2xl bg-indigo-50">
+                                <div>
+                                    <i><i class="fa-solid fa-user-group" style="color: rgb(116, 192, 252);"></i>
+                                </div>
+                                <div class="flex flex-col gap-6">
+                                    <span>Nombre de groupes</span>
+                                    <strang>4</strang>
+                                    <small>+2 ce mois-ci</small>
+
+                                </div>
+                            </article>
+
+                            <article
+                                class="flex h-45 w-20 shrink-0 items-center justify-around rounded-2xl bg-indigo-50">
+                                <div>
+                                    <i class="fa-regular fa-user" style="color: rgb(116, 192, 252);"></i>
+                                </div>
+                                <div class="flex flex-col gap-6 ">
+                                    <span>Nombre de membres</span>
+                                    <strang>16</strang>
+                                    <small></small>
+
+                                </div>
+                            </article>
+
+                            <article
+                                class="flex h-45 w-20 shrink-0 items-center justify-center rounded-2xl bg-indigo-50">
+                                <div>
+                                    <i class="fa-solid fa-list" style="color: rgb(116, 192, 252);"></i>
+                                </div>
+                                <div class="flex flex-col gap-6">
+                                    <span>Total des dépenses</span>
+                                    <strang>35425DH</strang>
+                                    <small>Dans tous vos groupes</small>
+
+                                </div>
+                            </article>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>Description
+                                    <th scope="col"> Description</th>
+                                    <th scope="col">Groupe</th>
+                                    <th scope="col">Montant</th>
+                                    <th scope="col">Payé par</th>
+                                    <th scope="col">Date</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Dîner au restaurant</th>
+                                    <td> Marrakech</td>
+                                    <td>860 DH</td>
+                                    <td>Vous</td>
+                                    <td>18 mai 2025</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Description</th>
+                                    <td>Marrakech</td>
+                                    <td>3 200 DH</td>
+                                    <td>Thomas</td>
+                                    <td>17 mai 2025</td>
+                                </tr>
+                                <tr>
+
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                </section>
+                <section class="Groupes-and-membres"></section>
+                <section class="Dépenses & soldes"></section>
+
+            </main>
         </div>
     </div>
- </section>
- <section class="Groupes-and-membres"></section>
- <section class="Dépenses & soldes"></section>
-
-    </main>
 
 </body>
 <footer>
