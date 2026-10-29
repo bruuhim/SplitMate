@@ -103,6 +103,7 @@
             </div>
 
             <button
+              id="open-create-group-button"
               type="button"
               class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium shadow-sm transition flex items-center gap-2"
             >
@@ -112,7 +113,9 @@
 
           <section class="mt-8 flex justify-between items-center">
             <div>
-              <h2 class="font-semibold text-lg">Your groups (3)</h2>
+              <h2 id="groups-title" class="font-semibold text-lg">
+                Your groups ()
+              </h2>
             </div>
 
             <div>
@@ -126,8 +129,10 @@
           </section>
 
           <!-- Groups -->
-          <section class="mt-8 grid grid-cols-3 gap-6">
-            <div
+          <section id="groups-list" class="mt-8 grid grid-cols-3 gap-6">
+            <!-- <div
+              id="group-weekend-trip"
+              data-group-id="weekend-trip"
               class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm flex items-center gap-4"
             >
               <div>
@@ -141,6 +146,8 @@
             </div>
 
             <div
+              id="group-apartment"
+              data-group-id="apartment"
               class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm"
             >
               <div>
@@ -153,7 +160,7 @@
               </div>
             </div>
 
-            <div>
+            <div id="group-dinner-club" data-group-id="dinner-club">
               <div>
                 <img src="assets/icon/Folder.svg" alt="Folder Icon" />
               </div>
@@ -162,11 +169,12 @@
                 <span>Dinner Club</span>
                 <p>3 members</p>
               </div>
-            </div>
+            </div> -->
           </section>
 
           <!-- Members -->
           <section
+            id="members-section"
             class="mt-8 bg-white border border-gray-200 rounded-xl shadow-sm flex flex-col"
           >
             <div
@@ -174,19 +182,20 @@
             >
               <div>
                 <h2 class="font-semibold text-lg">Members</h2>
-                <p class="text-sm text-gray-500">
+                <p id="members-summary" class="text-sm text-gray-500">
                   4 people across your groups, including you.
                 </p>
               </div>
               <button
+                id="add-member-button"
                 type="button"
-                class="border border-gray-300 bg-white hover:bg-gray-50 text-gray-800 text-sm font-medium px-4 py-2 rounded-md transition-colors mr-8"
+                class="border border-gray-300 bg-white text-gray-800 text-sm font-medium px-4 py-2 rounded-md hover:bg-gray-50 transition-colors"
               >
                 + Add Member
               </button>
             </div>
 
-            <table class="w-full text-left border-collapse">
+            <table id="members-table" class="w-full text-left border-collapse">
               <thead class="bg-[#F8F9FA] text-gray-600 font-medium">
                 <tr>
                   <th class="py-3 px-6">Name</th>
@@ -196,29 +205,38 @@
                 </tr>
               </thead>
 
-              <tbody>
-                <tr>
+              <tbody id="members-table-body">
+                <!-- <tr id="member-alex" data-member-id="alex">
                   <td class="py-3 px-6">
                     <span
+                      id="member-alex-avatar"
                       class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-blue-100 text-blue-700 text-xs font-semibold mr-3 align-middle"
                       >AM</span
                     >
-                    <span>Alex Morgan</span>
+                    <span id="member-alex-name">Alex Morgan</span>
                   </td>
 
-                  <td class="py-3 px-6 text-gray-500">alex.morgan@email.com</td>
+                  <td id="member-alex-email" class="py-3 px-6 text-gray-500">
+                    alex.morgan@email.com
+                  </td>
 
-                  <td class="py-3 px-6">
+                  <td id="member-alex-groups" class="py-3 px-6">
                     Weekend Trip, Apartment, Dinner Club
                   </td>
 
                   <td class="py-3 px-6">
                     <a
+                      id="edit-member-alex"
+                      data-action="edit"
+                      data-member-id="alex"
                       href="#"
                       class="text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors"
                       >Edit</a
                     >
                     <a
+                      id="remove-member-alex"
+                      data-action="remove"
+                      data-member-id="alex"
                       href="#"
                       class="ml-4 text-sm font-medium text-red-600 hover:text-red-800 transition-colors"
                       >Remove</a
@@ -226,67 +244,117 @@
                   </td>
                 </tr>
 
-                <tr>
+                <tr id="member-jamie" data-member-id="jamie">
                   <td>
-                    <span>JC</span>
-                    <span>Jamie Chen</span>
+                    <span id="member-jamie-avatar">JC</span>
+                    <span id="member-jamie-name">Jamie Chen</span>
                   </td>
 
-                  <td>jamie.chen@email.com</td>
+                  <td id="member-jamie-email">jamie.chen@email.com</td>
 
-                  <td>Weekend Trip, Apartment, Dinner Club</td>
-
-                  <td>
-                    <a href="#">Edit</a>
-                    <a href="#">Remove</a>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>
-                    <span>SP</span>
-                    <span>Sam Patel</span>
+                  <td id="member-jamie-groups">
+                    Weekend Trip, Apartment, Dinner Club
                   </td>
 
-                  <td>sam.patel@email.com</td>
-
-                  <td>Weekend Trip, Apartment</td>
-
                   <td>
-                    <a href="#">Edit</a>
-                    <a href="#">Remove</a>
+                    <a
+                      id="edit-member-jamie"
+                      data-action="edit"
+                      data-member-id="jamie"
+                      href="#"
+                      >Edit</a
+                    >
+                    <a
+                      id="remove-member-jamie"
+                      data-action="remove"
+                      data-member-id="jamie"
+                      href="#"
+                      >Remove</a
+                    >
                   </td>
                 </tr>
 
-                <tr>
+                <tr id="member-sam" data-member-id="sam">
+                  <td>
+                    <span id="member-sam-avatar">SP</span>
+                    <span id="member-sam-name">Sam Patel</span>
+                  </td>
+
+                  <td id="member-sam-email">sam.patel@email.com</td>
+
+                  <td id="member-sam-groups">Weekend Trip, Apartment</td>
+
+                  <td>
+                    <a
+                      id="edit-member-sam"
+                      data-action="edit"
+                      data-member-id="sam"
+                      href="#"
+                      >Edit</a
+                    >
+                    <a
+                      id="remove-member-sam"
+                      data-action="remove"
+                      data-member-id="sam"
+                      href="#"
+                      >Remove</a
+                    >
+                  </td>
+                </tr>
+
+                <tr id="member-taylor" data-member-id="taylor">
                   <td class="py-3 px-6">
-                    <span>TR</span>
-                    <span>Taylor Reed</span>
+                    <span id="member-taylor-avatar">TR</span>
+                    <span id="member-taylor-name">Taylor Reed</span>
                   </td>
 
-                  <td class="py-3 px-6">taylor.reed@email.com</td>
+                  <td id="member-taylor-email" class="py-3 px-6">
+                    taylor.reed@email.com
+                  </td>
 
-                  <td class="py-3 px-6">Weekend Trip, Dinner Club</td>
+                  <td id="member-taylor-groups" class="py-3 px-6">
+                    Weekend Trip, Dinner Club
+                  </td>
 
                   <td class="py-3 px-6">
-                    <a href="#">Edit</a>
-                    <a href="#">Remove</a>
+                    <a
+                      id="edit-member-taylor"
+                      data-action="edit"
+                      data-member-id="taylor"
+                      href="#"
+                      >Edit</a
+                    >
+                    <a
+                      id="remove-member-taylor"
+                      data-action="remove"
+                      data-member-id="taylor"
+                      href="#"
+                      >Remove</a
+                    >
                   </td>
-                </tr>
+                </tr> -->
               </tbody>
             </table>
           </section>
 
           <!-- Modals -->
-          <section class="w-full flex items-stretch mt-8 gap-6">
+          <section
+            id="forms-section"
+            class="w-full flex items-stretch mt-8 gap-6"
+          >
             <article
               class="h-full flex-1 min-w-0 bg-white border border-gray-200 rounded-xl shadow-sm flex flex-col overflow-hidden p-6 gap-2"
             >
               <div>
-                <h3 class="font-semibold text-lg mb-6">Create group</h3>
+                <h3
+                  id="create-group-heading"
+                  class="font-semibold text-lg mb-6"
+                >
+                  Create group
+                </h3>
               </div>
 
-              <form class="space-y-4">
+              <form id="create-group-form" class="space-y-4">
                 <div class="flex flex-col gap-2">
                   <label
                     for="group-name"
@@ -329,12 +397,14 @@
 
                 <div class="flex items-center gap-2 pt-1">
                   <button
+                    id="create-group-submit"
                     type="submit"
                     class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-md transition-colors"
                   >
                     Create Group
                   </button>
                   <button
+                    id="create-group-cancel"
                     type="button"
                     class="border border-gray-300 bg-white hover:bg-gray-50 text-gray-800 text-sm font-medium px-4 py-2 rounded-md transition-colors"
                   >
@@ -348,10 +418,12 @@
               class="flex-1 min-w-0 bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden p-6"
             >
               <div>
-                <h3 class="font-semibold text-lg mb-6">Add / edit member</h3>
+                <h3 id="member-form-heading" class="font-semibold text-lg mb-6">
+                  Add / edit member
+                </h3>
               </div>
 
-              <form>
+              <form id="member-form">
                 <div class="flex gap-4 mb-4">
                   <div class="flex flex-col flex-1 min-w-0 gap-2">
                     <label
@@ -411,12 +483,14 @@
 
                 <div class="flex items-center gap-2">
                   <button
+                    id="save-member-button"
                     type="submit"
                     class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-md transition-colors"
                   >
                     Save Member
                   </button>
                   <button
+                    id="cancel-member-button"
                     type="button"
                     class="border border-gray-300 bg-white hover:bg-gray-50 text-gray-800 text-sm font-medium px-4 py-2 rounded-md transition-colors"
                   >
@@ -429,5 +503,6 @@
         </main>
       </div>
     </div>
+    <script src="js/groups&members.js"></script>
   </body>
 </html>
