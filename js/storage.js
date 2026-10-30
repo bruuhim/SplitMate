@@ -1,4 +1,4 @@
-let groups = [
+  const groups = [
   {
     id: 1,
     name: "Weekend Trip",
@@ -41,7 +41,7 @@ let groups = [
   },
 ];
 
-let members = [
+const members = [
   { id: 1, groupId: 1, name: "Alex Morgan", username: "alex" },
   { id: 2, groupId: 1, name: "Jamie Chen", username: "jamie" },
   { id: 3, groupId: 1, name: "Taylor Smith", username: "taylor" },
@@ -63,4 +63,12 @@ let members = [
 
   { id: 16, groupId: 5, name: "Taylor Smith", username: "taylor" },
   { id: 17, groupId: 5, name: "Jamie Chen", username: "jamie" },
+  
+   { id: 16, groupId: 5, name: "Taylor Smith", username: "taylor" },
+  { id: 17, groupId: 5, name: "Jamie Chen", username: "jamie" },
 ];
+
+
+
+// window.groups = groups;
+// window.members = members;
