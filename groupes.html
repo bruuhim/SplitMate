@@ -114,7 +114,7 @@
           <section class="mt-8 flex justify-between items-center">
             <div>
               <h2 id="groups-title" class="font-semibold text-lg">
-                Your groups ()
+                Your groups (0)
               </h2>
             </div>
 
@@ -123,13 +123,16 @@
                 type="search"
                 id="search-box"
                 class="w-64 h-10 border rounded-lg bg-white border-gray-200 text-gray-700 px-3 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
-                placeholder="Search groups or members"
+                placeholder="⌕ Search groups"
               />
             </div>
           </section>
 
           <!-- Groups -->
-          <section id="groups-list" class="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+          <section
+            id="groups-list"
+            class="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3"
+          >
             <!-- <div
               id="group-weekend-trip"
               data-group-id="weekend-trip"
@@ -196,7 +199,7 @@
               <thead class="bg-[#F8F9FA] text-gray-600 font-medium">
                 <tr>
                   <th class="py-3 px-6">Name</th>
-                  <th class="py-3 px-6">Email</th>
+                  <th class="py-3 px-6">Username</th>
                   <th class="py-3 px-6">Group</th>
                   <th class="py-3 px-6">Actions</th>
                 </tr>
@@ -339,6 +342,7 @@
             id="forms-section"
             class="w-full flex items-stretch mt-8 gap-6"
           >
+            <!-- Create Group -->
             <article
               class="h-full flex-1 min-w-0 bg-white border border-gray-200 rounded-xl shadow-sm flex flex-col overflow-hidden p-6 gap-2"
             >
@@ -352,46 +356,89 @@
               </div>
 
               <form id="create-group-form" class="space-y-4">
+                <!-- Group name -->
                 <div class="flex flex-col gap-2">
                   <label
                     for="group-name"
                     class="text-xs font-medium text-gray-800"
-                    >Group name</label
                   >
+                    Group name
+                  </label>
 
                   <input
                     type="text"
                     id="group-name"
-                    name="groupName"
+                    name="name"
                     placeholder="e.g. Summer vacation"
+                    required
                     class="w-full h-10 border border-gray-300 rounded-md bg-white px-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
                   />
                 </div>
 
+                <!-- Description -->
                 <div class="flex flex-col gap-2">
                   <label
-                    for="group-members"
+                    for="group-description"
                     class="text-xs font-medium text-gray-800"
-                    >Members</label
                   >
+                    Description
+                  </label>
+
+                  <textarea
+                    id="group-description"
+                    name="description"
+                    placeholder="Describe your group..."
+                    rows="3"
+                    required
+                    class="w-full border border-gray-300 rounded-md bg-white px-3 py-2 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
+                  ></textarea>
+                </div>
+
+                <!-- Currency -->
+                <div class="flex flex-col gap-2">
+                  <label
+                    for="group-currency"
+                    class="text-xs font-medium text-gray-800"
+                  >
+                    Currency
+                  </label>
 
                   <select
-                    id="group-members"
-                    name="members"
-                    class="w-full h-10 border border-gray-300 rounded-md bg-white px-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
+                    id="group-currency"
+                    name="currency"
+                    required
+                    class="w-full h-10 border border-gray-300 rounded-md bg-white px-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
                   >
-                    <option value="" disabled selected>Select members</option>
-                    <option value="alex">Alex Morgan</option>
-                    <option value="jamie">Jamie Chen</option>
-                    <option value="sam">Sam Patel</option>
-                    <option value="taylor">Taylor Reed</option>
+                    <option value="" disabled selected>Select currency</option>
+                    <option value="USD">USD ($)</option>
+                    <option value="EUR">EUR (€)</option>
+                    <option value="MAD">MAD (.د.م)</option>
                   </select>
                 </div>
 
+                <!-- Start date -->
+                <div class="flex flex-col gap-2">
+                  <label
+                    for="group-start-date"
+                    class="text-xs font-medium text-gray-800"
+                  >
+                    Start date
+                  </label>
+
+                  <input
+                    type="date"
+                    id="group-start-date"
+                    name="startDate"
+                    required
+                    class="w-full h-10 border border-gray-300 rounded-md bg-white px-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
+                  />
+                </div>
+
                 <p class="text-xs text-gray-500">
-                  You'll be added to the group automatically.
+                  You can add members after creating the group.
                 </p>
 
+                <!-- Buttons -->
                 <div class="flex items-center gap-2 pt-1">
                   <button
                     id="create-group-submit"
@@ -400,6 +447,7 @@
                   >
                     Create Group
                   </button>
+
                   <button
                     id="create-group-cancel"
                     type="button"
@@ -411,6 +459,7 @@
               </form>
             </article>
 
+            <!-- Add / Edit Member -->
             <article
               class="flex-1 min-w-0 bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden p-6"
             >
@@ -421,63 +470,74 @@
               </div>
 
               <form id="member-form">
+                <!-- Full name and username -->
                 <div class="flex gap-4 mb-4">
                   <div class="flex flex-col flex-1 min-w-0 gap-2">
                     <label
                       for="member-name"
                       class="text-xs font-medium text-gray-800"
-                      >Full name</label
                     >
+                      Full name
+                    </label>
 
                     <input
                       type="text"
                       id="member-name"
-                      name="fullName"
+                      name="name"
                       placeholder="Enter full name"
+                      required
                       class="w-full h-10 border border-gray-300 rounded-md bg-white px-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
                     />
                   </div>
 
                   <div class="flex flex-col flex-1 min-w-0 gap-2">
                     <label
-                      for="member-email"
+                      for="member-username"
                       class="text-xs font-medium text-gray-800"
-                      >Email address</label
                     >
+                      Username
+                    </label>
 
                     <input
-                      type="email"
-                      id="member-email"
-                      name="email"
-                      placeholder="name@email.com"
+                      type="text"
+                      id="member-username"
+                      name="username"
+                      placeholder="e.g. alex"
+                      required
                       class="w-full h-10 border border-gray-300 rounded-md bg-white px-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
                     />
                   </div>
                 </div>
 
+                <!-- Group -->
                 <div class="flex flex-col gap-2 mb-4">
                   <label
-                    for="member-groups"
+                    for="member-group"
                     class="text-xs font-medium text-gray-800"
-                    >Groups joined</label
                   >
+                    Group
+                  </label>
 
                   <select
-                    id="member-groups"
-                    name="groupsJoined"
-                    class="w-full h-10 border border-gray-300 rounded-md bg-white px-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
+                    id="member-group"
+                    name="groupId"
+                    required
+                    class="w-full h-10 border border-gray-300 rounded-md bg-white px-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
                   >
-                    <option value="" disabled selected>Select groups</option>
-                    <option value="weekend">Weekend Trip</option>
-                    <option value="apartment">Apartment</option>
-                    <option value="dinner">Dinner Club</option>
+                    <option value="" disabled selected>Select a group</option>
+                    <option value="1">Weekend Trip</option>
+                    <option value="2">Apartment</option>
+                    <option value="3">Dinner Club</option>
+                    <option value="4">Spain Vacation</option>
+                    <option value="5">Birthday Gift</option>
                   </select>
                 </div>
 
                 <p class="text-xs text-gray-500 mb-4">
-                  Choose one or more groups for this member.
+                  Select the group this member belongs to.
                 </p>
 
+                <!-- Buttons -->
                 <div class="flex items-center gap-2">
                   <button
                     id="save-member-button"
@@ -486,6 +546,7 @@
                   >
                     Save Member
                   </button>
+
                   <button
                     id="cancel-member-button"
                     type="button"
