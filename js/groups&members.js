@@ -6,13 +6,21 @@ let createGroupHeading = document.getElementById("create-group-heading");
 let addMemberButton = document.getElementById("add-member-button");
 let memberFormHeading = document.getElementById("member-form-heading");
 let searchBox = document.getElementById("search-box");
+let membersSection = document.getElementById("members-section");
+let formsSection = document.getElementById("forms-section");
 
 // i add a smooth scrolling to form cards
 function scrollIntoForm() {
+  formsSection.classList.add("hidden");
+
   openCreateGroupButton.addEventListener("click", () => {
+    formsSection.classList.remove("hidden");
+
     createGroupHeading.scrollIntoView({ behavior: "smooth" });
   });
   addMemberButton.addEventListener("click", () => {
+    formsSection.classList.remove("hidden");
+
     memberFormHeading.scrollIntoView({ behavior: "smooth" });
   });
 }
@@ -23,8 +31,8 @@ function displayGroups(groups) {
   groupsList.innerHTML = "";
 
   groups.forEach((group) => {
-    let memberCount = members.filter(
-      (member) => member.groupId === group.id,
+    let memberCount = members.filter((member) =>
+      member.groups.includes(group.id),
     ).length;
 
     groupsList.innerHTML += `
@@ -47,7 +55,7 @@ function displayGroups(groups) {
         <h3 class="font-semibold text-slate-900">
           ${group.name}
         </h3>
-        <p class="mt-1 text-sm text-slate-500">
+        <p data-member-count class="mt-1 text-sm text-slate-500">
           ${memberCount} members
         </p>
       </div>
@@ -69,6 +77,8 @@ function displayGroups(groups) {
   </div>`;
   });
 
+  membersSection.classList.add("hidden");
+
   selectGroup();
 }
 
@@ -83,17 +93,17 @@ function selectGroup() {
 
       groupCard.classList.add("ring-2", "ring-blue-400");
 
-      displayMembers(groupCard);
+      displayMembers(Number(groupCard.dataset.id));
     });
   });
 }
 
-function displayMembers(groupCard) {
-  let groupID = Number(groupCard.dataset.id);
-
+function displayMembers(groupID) {
   memberstableBody.innerHTML = "";
 
   let groupMembers = members.filter((member) => member.groupId === groupID);
+
+  membersSection.classList.remove("hidden");
 
   groupMembers.forEach((member) => {
     let currentGroup = groups.find((group) => group.id === groupID);
@@ -109,7 +119,7 @@ function displayMembers(groupCard) {
                   </td>
 
                   <td class="py-3 px-6 text-gray-500">
-                    ${member.username}@email.com
+                    ${member.username}
                   </td>
 
                   <td class="py-3 px-6">
@@ -117,23 +127,29 @@ function displayMembers(groupCard) {
                   </td>
 
                   <td class="py-3 px-6">
-                    <a
-                      id="edit-member"
-                      data-action="edit"
-                      href="#"
-                      class="text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors"
-                      >Edit</a
-                    >
-                    <a
-                      id="remove-member"
-                      data-action="remove"
-                      href="#"
-                      class="ml-4 text-sm font-medium text-red-600 hover:text-red-800 transition-colors"
-                      >Remove</a
-                    >
-                  </td>
+
+                  <button
+                    type="button"
+                    data-action="edit"
+                    data-member-id="${member.id}"
+                    class="text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors"
+                  >
+                    Edit
+                  </button>
+
+                  <button
+                    type="button"
+                    data-action="remove"
+                    data-member-id="${member.id}"
+                    class="ml-4 text-sm font-medium text-red-600 hover:text-red-800 transition-colors"
+                  >
+                    Remove
+                  </button>
+                </td>
                 </tr>`;
   });
+
+  deleteMember(groupID);
 }
 
 function searchInput() {
@@ -146,17 +162,34 @@ function searchInput() {
         group.description.toLowerCase().includes(searchValue),
     );
 
-    let filteredMembers = members.filter(
-      (member) =>
-        member.name.toLowerCase().includes(searchValue) ||
-        member.username.toLowerCase().includes(searchValue),
-    );
-
     displayGroups(filteredGroups);
-    displayMembers(filteredMembers);
   });
 }
 
+function deleteMember(groupID) {
+  let deleteMemberBtns = memberstableBody.querySelectorAll(
+    '[data-action="remove"]',
+  );
+
+  deleteMemberBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      let deleteMemberID = Number(btn.dataset.memberId);
+
+      members = members.filter((member) => member.id !== deleteMemberID);
+
+      let updatedCount = members.filter(
+        (member) => member.groupId === groupID,
+      ).length;
+
+      let groupCard = groupsList.querySelector(`[data-id="${groupID}"]`);
+
+      groupCard.querySelector("[data-member-count]").textContent =
+        `${updatedCount} members`;
+
+      displayMembers(groupID);
+    });
+  });
+}
 displayGroups(groups);
 scrollIntoForm();
 searchInput();

@@ -42,25 +42,46 @@ let groups = [
 ];
 
 let members = [
-  { id: 1, groupId: 1, name: "Alex Morgan", username: "alex" },
-  { id: 2, groupId: 1, name: "Jamie Chen", username: "jamie" },
-  { id: 3, groupId: 1, name: "Taylor Smith", username: "taylor" },
-  { id: 4, groupId: 1, name: "Jordan Lee", username: "jordan" },
-
-  { id: 5, groupId: 2, name: "Alex Morgan", username: "alex" },
-  { id: 6, groupId: 2, name: "Sam Wilson", username: "sam" },
-  { id: 7, groupId: 2, name: "Casey Brown", username: "casey" },
-
-  { id: 8, groupId: 3, name: "Jamie Chen", username: "jamie" },
-  { id: 9, groupId: 3, name: "Taylor Smith", username: "taylor" },
-  { id: 10, groupId: 3, name: "Morgan Davis", username: "morgan" },
-
-  { id: 11, groupId: 4, name: "Jordan Lee", username: "jordan" },
-  { id: 12, groupId: 4, name: "Sam Wilson", username: "sam" },
-  { id: 13, groupId: 4, name: "Casey Brown", username: "casey" },
-  { id: 14, groupId: 4, name: "Alex Morgan", username: "alex" },
-  { id: 15, groupId: 4, name: "Morgan Davis", username: "morgan" },
-
-  { id: 16, groupId: 5, name: "Taylor Smith", username: "taylor" },
-  { id: 17, groupId: 5, name: "Jamie Chen", username: "jamie" },
+  {
+    id: 1,
+    name: "Alex Morgan",
+    username: "alex",
+    groups: [1, 2, 4],
+  },
+  {
+    id: 2,
+    name: "Jamie Chen",
+    username: "jamie",
+    groups: [1, 3, 5],
+  },
+  {
+    id: 3,
+    name: "Taylor Smith",
+    username: "taylor",
+    groups: [1, 3, 5],
+  },
+  {
+    id: 4,
+    name: "Jordan Lee",
+    username: "jordan",
+    groups: [1, 4],
+  },
+  {
+    id: 5,
+    name: "Sam Wilson",
+    username: "sam",
+    groups: [2, 4],
+  },
+  {
+    id: 6,
+    name: "Casey Brown",
+    username: "casey",
+    groups: [2, 4],
+  },
+  {
+    id: 7,
+    name: "Morgan Davis",
+    username: "morgan",
+    groups: [3, 4],
+  },
 ];
