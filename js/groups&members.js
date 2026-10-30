@@ -23,6 +23,7 @@ function scrollIntoForm() {
 
     memberFormHeading.scrollIntoView({ behavior: "smooth" });
   });
+  displayModals();
 }
 
 // i add groups from groups array object to html using innerhtml
@@ -101,7 +102,9 @@ function selectGroup() {
 function displayMembers(groupID) {
   memberstableBody.innerHTML = "";
 
-  let groupMembers = members.filter((member) => member.groupId === groupID);
+  let groupMembers = members.filter((member) =>
+    member.groups.includes(groupID),
+  );
 
   membersSection.classList.remove("hidden");
 
@@ -175,10 +178,16 @@ function deleteMember(groupID) {
     btn.addEventListener("click", () => {
       let deleteMemberID = Number(btn.dataset.memberId);
 
-      members = members.filter((member) => member.id !== deleteMemberID);
+      let member = members.find((member) => member.id === deleteMemberID);
 
-      let updatedCount = members.filter(
-        (member) => member.groupId === groupID,
+      member.groups = member.groups.filter((id) => id !== groupID);
+
+      if (member.groups.length === 0) {
+        members = members.filter((member) => member.id !== deleteMemberID);
+      }
+
+      let updatedCount = members.filter((member) =>
+        member.groups.includes(groupID),
       ).length;
 
       let groupCard = groupsList.querySelector(`[data-id="${groupID}"]`);
@@ -190,6 +199,245 @@ function deleteMember(groupID) {
     });
   });
 }
+
+function editMember(groupID) {}
+
+function displayModals() {
+  let groupCheckboxes = groups
+    .map(
+      (group) => `
+      <label
+        for="member-group-${group.id}"
+        class="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 cursor-pointer transition-colors hover:border-blue-300 hover:bg-blue-50"
+      >
+        <input
+          type="checkbox"
+          id="member-group-${group.id}"
+          name="groups"
+          value="${group.id}"
+          class="h-4 w-4 accent-blue-600"
+        />
+
+        <span class="font-medium">${group.name}</span>
+      </label>
+    `,
+    )
+    .join("");
+
+  formsSection.innerHTML = "";
+
+  formsSection.innerHTML = `<article
+              class="h-full flex-1 min-w-0 bg-white border border-gray-200 rounded-xl shadow-sm flex flex-col overflow-hidden p-6 gap-2"
+            >
+              <div>
+                <h3
+                  id="create-group-heading"
+                  class="font-semibold text-lg mb-6"
+                >
+                  Create group
+                </h3>
+              </div>
+
+              <form id="create-group-form" class="space-y-4">
+                <!-- Group name -->
+                <div class="flex flex-col gap-2">
+                  <label
+                    for="group-name"
+                    class="text-xs font-medium text-gray-800"
+                  >
+                    Group name
+                  </label>
+
+                  <input
+                    type="text"
+                    id="group-name"
+                    name="name"
+                    placeholder="e.g. Summer vacation"
+                    required
+                    class="w-full h-10 border border-gray-300 rounded-md bg-white px-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
+                  />
+                </div>
+
+                <!-- Description -->
+                <div class="flex flex-col gap-2">
+                  <label
+                    for="group-description"
+                    class="text-xs font-medium text-gray-800"
+                  >
+                    Description
+                  </label>
+
+                  <textarea
+                    id="group-description"
+                    name="description"
+                    placeholder="Describe your group..."
+                    rows="3"
+                    required
+                    class="w-full border border-gray-300 rounded-md bg-white px-3 py-2 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
+                  ></textarea>
+                </div>
+
+                <!-- Currency -->
+                <div class="flex flex-col gap-2">
+                  <label
+                    for="group-currency"
+                    class="text-xs font-medium text-gray-800"
+                  >
+                    Currency
+                  </label>
+
+                  <select
+                    id="group-currency"
+                    name="currency"
+                    required
+                    class="w-full h-10 border border-gray-300 rounded-md bg-white px-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
+                  >
+                    <option value="" disabled selected>Select currency</option>
+                    <option value="USD">USD ($)</option>
+                    <option value="EUR">EUR (€)</option>
+                    <option value="MAD">MAD (.د.م)</option>
+                  </select>
+                </div>
+
+                <!-- Start date -->
+                <div class="flex flex-col gap-2">
+                  <label
+                    for="group-start-date"
+                    class="text-xs font-medium text-gray-800"
+                  >
+                    Start date
+                  </label>
+
+                  <input
+                    type="date"
+                    id="group-start-date"
+                    name="startDate"
+                    required
+                    class="w-full h-10 border border-gray-300 rounded-md bg-white px-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
+                  />
+                </div>
+
+                <p class="text-xs text-gray-500">
+                  You can add members after creating the group.
+                </p>
+
+                <!-- Buttons -->
+                <div class="flex items-center gap-2 pt-1">
+                  <button
+                    id="create-group-submit"
+                    type="submit"
+                    class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-md transition-colors"
+                  >
+                    Create Group
+                  </button>
+
+                  <button
+                    id="create-group-cancel"
+                    type="button"
+                    class="border border-gray-300 bg-white hover:bg-gray-50 text-gray-800 text-sm font-medium px-4 py-2 rounded-md transition-colors"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </article>
+
+            <!-- Add / Edit Member -->
+            <article
+              class="flex-1 min-w-0 bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden p-6"
+            >
+              <div>
+                <h3 id="member-form-heading" class="font-semibold text-lg mb-6">
+                  Add / edit member
+                </h3>
+              </div>
+
+              <form id="member-form">
+                <!-- Full name and username -->
+                <div class="flex gap-4 mb-4">
+                  <div class="flex flex-col flex-1 min-w-0 gap-2">
+                    <label
+                      for="member-name"
+                      class="text-xs font-medium text-gray-800"
+                    >
+                      Full name
+                    </label>
+
+                    <input
+                      type="text"
+                      id="member-name"
+                      name="name"
+                      placeholder="Enter full name"
+                      required
+                      class="w-full h-10 border border-gray-300 rounded-md bg-white px-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
+                    />
+                  </div>
+
+                  <div class="flex flex-col flex-1 min-w-0 gap-2">
+                    <label
+                      for="member-username"
+                      class="text-xs font-medium text-gray-800"
+                    >
+                      Username
+                    </label>
+
+                    <input
+                      type="text"
+                      id="member-username"
+                      name="username"
+                      placeholder="e.g. alex"
+                      required
+                      class="w-full h-10 border border-gray-300 rounded-md bg-white px-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
+                    />
+                  </div>
+                </div>
+
+                  <!-- Groups -->
+                  <div class="flex flex-col gap-3 mb-4">
+                    <div>
+                      <label class="text-xs font-medium text-gray-800">
+                        Groups
+                      </label>
+
+                      <p class="text-xs text-gray-500 mt-1">
+                        Select one or more groups for this member.
+                      </p>
+                    </div>
+
+                    <div
+                      id="member-groups-list"
+                      class="mx-auto grid w-full max-w-2xl grid-cols-1 sm:grid-cols-2 gap-3"
+                    >
+                      ${groupCheckboxes}
+                    </div>
+                  </div>
+
+                <p class="text-xs text-gray-500 mb-4">
+                  Select the group this member belongs to.
+                </p>
+
+                <!-- Buttons -->
+                <div class="flex items-center gap-2">
+                  <button
+                    id="save-member-button"
+                    type="submit"
+                    class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-md transition-colors"
+                  >
+                    Save Member
+                  </button>
+
+                  <button
+                    id="cancel-member-button"
+                    type="button"
+                    class="border border-gray-300 bg-white hover:bg-gray-50 text-gray-800 text-sm font-medium px-4 py-2 rounded-md transition-colors"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </article>`;
+}
+
 displayGroups(groups);
 scrollIntoForm();
 searchInput();
