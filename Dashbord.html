@@ -42,7 +42,7 @@
             <nav class="flex flex-col justify-center  ">
                 <p class="text-[#7F8CAF] font-mono text-xs uppercase tracking-wider font-medium ml-3">ESPACE DE TRAVAIL </p>
                 <div class="flex flex-col gap-4">
-                    <button id="bord" class="flex item-center gap-2 w-full py-3  bg-white-600 text- text-[#F3F5FB] rounded-4xl mr-5 text-gray-400 
+                    <button id="btn-dashboard" class="flex item-center gap-2 w-full py-3  bg-white-600 text- text-[#F3F5FB] rounded-4xl mr-5 text-gray-400 
                          hover:bg-slate-800 hover:text-gray-200
                    focus:bg-white focus:text-slate-900 focus:shadow-md
                    active:bg-white active:text-slate-900
@@ -53,14 +53,14 @@
                         </div>
                         <a href="Dashbord.html">Tableau de bord</a>
                     </button>
-                    <button id="Group-Nombres" class="flex item-center w-full py-3 bg-white-600  rounded-4xl gap-2 text-gray-400 
+                    <button id="btn-groups" class="flex item-center w-full py-3 bg-white-600  rounded-4xl gap-2 text-gray-400 
                            hover:bg-slate-800 hover:text-gray-200
                    focus:bg-white focus:text-slate-900 focus:shadow-md
                    active:bg-white active:text-slate-900">
                         <i class="fa-solid fa-clipboard-user" style="color: rgb(116, 192, 252)"></i>
                         <a href="groupes.html">Groupes &amp; membres</a>
                     </button>
-                    <button id="Dpenses-Soldes" class="flex item-center w-full py-3 bg-white-600 rounded-4xl  gap-2 text-gray-400
+                    <button id="btn-depenses" class="flex item-center w-full py-3 bg-white-600 rounded-4xl  gap-2 text-gray-400
                            hover:bg-slate-800 hover:text-gray-200
                    focus:bg-white focus:text-slate-900 focus:shadow-md
                    active:bg-white active:text-slate-900 ">
@@ -70,9 +70,6 @@
                     </button>
                 </div>
             </nav>
-
-
-            <!-- <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400"> -->
 
 
             <div
@@ -86,9 +83,7 @@
                 <button id="voir-group" class=" text-[#7CB0FF] font-semibold  ">Voir le groupe</button>
             </div>
 
-            <!-- <div class="flex  border-t border-slate-800 "> -->
-
-            <div class="border-t border-slate-600 pt-6 px-2 flex items-center gap-2 mt- mb-7">
+            <div class="border-t border-slate-600 pt-4 px-2 flex items-center gap-2 mt- mb-7">
 
                 <avatar
                     class="w-11 h-11 rounded-full bg-slate-100 flex items-center justify-center font-bold text-sm text-slate-400 select-none ">
@@ -120,18 +115,13 @@
 
          <!-- -----------------------------partie-main-------------------------------------------------- -->
 
-            <main class="ml-7 mt-7 mr-7 ">
-                <section id="Dashboard" class="hidden">
+            <main class=" flex-1 ml-7 mt-7 mr-7 ">
+                <section id="Dashboard" class="">
                     <div class="flex justify-between items-center w-full ">
                         <div class="flex flex-col gap-2">
                             <span
                                 class="w-max bg-white text-blue-600 font-bold text-[10px] tracking-widest uppercase px-3 py-1.5 rounded-full shadow-sm">VUE
                                 D’ENSEMBLE</span>
-
-                            <!-- font-extrabold font-['Plus_Jakarta_Sans',_sans-serif] text-4xl tracking-tight text-slate-900">
-
- -->
-
                             <h1
                                 class="font-bold font-['Plus_Jakarta_Sans',_sans-serif] text-4xl  tracking-tight text-slate-800 ">
                                 Tableau de bord
@@ -151,8 +141,6 @@
 
                     <!-- ---------------------------------------------partie-article------------------------------- -->
                     <div class="flex flex-col gap-10">
-
-
 
                         <div  class="flex flex-wrap md:flex-nowrap gap-6 mt-8 w-full">
                             <article id="Nombre-et-groupe"
@@ -270,8 +258,8 @@
                             </div>
                         </div>
                 </section>
-                <section class="Groupes">
-<main class="flex-1 bg-gray-100 p-8">
+                <section id="Groupes" class="hidden">
+<!-- <main class="flex-1 bg-gray-100 p-8"> -->
           <section class="flex justify-between items-center">
             <div>
               <h1 class="text-2xl font-bold text-gray-900">
@@ -678,7 +666,7 @@
             </article>
          </main>
                 </section>
-                <section class="Dépenses">
+                <section id="Depenses" class="hidden">
 
 
                     
