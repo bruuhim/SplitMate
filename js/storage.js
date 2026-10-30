@@ -1,4 +1,4 @@
-let groups = [
+  let groups = [
   {
     id: 1,
     name: "Weekend Trip",
@@ -85,3 +85,4 @@ let members = [
     groups: [3, 4],
   },
 ];
+
