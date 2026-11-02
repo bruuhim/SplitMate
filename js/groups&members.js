@@ -257,7 +257,7 @@ function editMemberForm(
   saveMemberBtn,
   checkboxes,
 ) {
-  updateMemberBtn.addEventListener("click", function (event) {
+  updateMemberBtn.addEventListener("submit", function (event) {
     event.preventDefault();
 
     let member = findMemberById(editingMemberID);
@@ -277,13 +277,41 @@ function editMemberForm(
     saveMemberBtn.classList.remove("hidden");
     updateMemberBtn.classList.add("hidden");
 
-    displayMembers();
+    displayMembers(groupID);
   });
 }
 
-function createGroup() {
-  
+function addMember(groupID) {
+  let memberNameInput = document.getElementById("member-name");
+  let memberUsernameInput = document.getElementById("member-username");
+  let memberChkboxInput = document.getElementById("member-groups-list");
+  let checkboxes = memberChkboxInput.querySelectorAll('input[type="checkbox"]');
+  let saveMemberBtn = document.getElementById("save-member-button");
+
+  saveMemberBtn.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    let member = {
+      id: Date.now(),
+      name: memberNameInput.value.trim(),
+      username: memberUsernameInput.value.trim(),
+      groups: [],
+    };
+
+    checkboxes.forEach((chk) => {
+      if (chk.checked) {
+        member.groups.push(Number(chk.value));
+      }
+    });
+
+    members.push(member);
+
+    displayMembers(groupID);
+  });
 }
+
+function createGroup() {}
+
 
 function findMemberById(id) {
   return members.find((item) => item.id === id);
@@ -534,6 +562,22 @@ function displayModals() {
             </article>`;
   createGroupHeading = document.getElementById("create-group-heading");
   memberFormHeading = document.getElementById("member-form-heading");
+}
+
+function readMembersFromLS() {
+    return JSON.parse(localStorage.getItem(members)) || [];
+}
+
+function saveMembersToLS(newMembersList) {
+    localStorage.setItem(members, JSON.stringify(newMembersList))
+}
+
+function readGroupsFromLS() {
+    return JSON.parse(localStorage.getItem(groups)) || [];
+}
+
+function saveGroupsToLS(newGroupsList) {
+    localStorage.setItem(groups, JSON.stringify(newGroupsList))
 }
 
 displayGroups(groups);
