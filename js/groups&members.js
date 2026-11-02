@@ -8,6 +8,7 @@ let memberFormHeading = document.getElementById("member-form-heading");
 let searchBox = document.getElementById("search-box");
 let membersSection = document.getElementById("members-section");
 let formsSection = document.getElementById("forms-section");
+let editingMemberID = null;
 
 // i add a smooth scrolling to form cards
 function scrollIntoForm() {
@@ -153,6 +154,7 @@ function displayMembers(groupID) {
   });
 
   deleteMember(groupID);
+  editMember(groupID);
 }
 
 function searchInput() {
@@ -200,7 +202,92 @@ function deleteMember(groupID) {
   });
 }
 
-function editMember(groupID) {}
+function editMember() {
+  let editMemberBtns = memberstableBody.querySelectorAll(
+    '[data-action="edit"]',
+  );
+
+  editMemberBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      formsSection.classList.remove("hidden");
+      memberFormHeading.scrollIntoView({ behavior: "smooth" });
+
+      let editMemberID = Number(btn.dataset.memberId);
+      editingMemberID = editMemberID;
+
+      let member = members.find((member) => member.id === editMemberID);
+
+      let memberNameInput = document.getElementById("member-name");
+      let memberUsernameInput = document.getElementById("member-username");
+
+      memberNameInput.value = member.name;
+      memberUsernameInput.value = member.username;
+
+      let memberChkboxInput = document.getElementById("member-groups-list");
+      let checkboxes = memberChkboxInput.querySelectorAll(
+        'input[type="checkbox"]',
+      );
+
+      checkboxes.forEach((chk) => {
+        chk.checked = member.groups.includes(Number(chk.value));
+      });
+
+      let saveMemberBtn = document.getElementById("save-member-button");
+      let updateMemberBtn = document.getElementById("update-member-button");
+
+      memberFormHeading.textContent = "Edit member";
+      saveMemberBtn.classList.add("hidden");
+      updateMemberBtn.classList.remove("hidden");
+
+      editMemberForm(
+        updateMemberBtn,
+        memberNameInput,
+        memberUsernameInput,
+        saveMemberBtn,
+        checkboxes,
+      );
+    });
+  });
+}
+
+function editMemberForm(
+  updateMemberBtn,
+  memberNameInput,
+  memberUsernameInput,
+  saveMemberBtn,
+  checkboxes,
+) {
+  updateMemberBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    let member = findMemberById(editingMemberID);
+
+    member.name = memberNameInput.value;
+    member.username = memberUsernameInput.value;
+
+    member.groups = [];
+
+    checkboxes.forEach((chk) => {
+      if (chk.checked) {
+        member.groups.push(Number(chk.value));
+      }
+    });
+
+    memberFormHeading.textContent = "Add member";
+    saveMemberBtn.classList.remove("hidden");
+    updateMemberBtn.classList.add("hidden");
+
+    displayMembers();
+  });
+}
+
+function createGroup() {
+  
+}
+
+function findMemberById(id) {
+  return members.find((item) => item.id === id);
+}
 
 function displayModals() {
   let groupCheckboxes = groups
@@ -348,7 +435,7 @@ function displayModals() {
             >
               <div>
                 <h3 id="member-form-heading" class="font-semibold text-lg mb-6">
-                  Add / edit member
+                  Add member
                 </h3>
               </div>
 
@@ -426,6 +513,15 @@ function displayModals() {
                     Save Member
                   </button>
 
+                  <div class="flex items-center gap-2">
+                  <button
+                    id="update-member-button"
+                    type="submit"
+                    class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-md transition-colors hidden"
+                  >
+                    Update Member
+                  </button>
+
                   <button
                     id="cancel-member-button"
                     type="button"
@@ -436,6 +532,8 @@ function displayModals() {
                 </div>
               </form>
             </article>`;
+  createGroupHeading = document.getElementById("create-group-heading");
+  memberFormHeading = document.getElementById("member-form-heading");
 }
 
 displayGroups(groups);
