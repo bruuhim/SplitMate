@@ -283,6 +283,33 @@ function editMemberForm(
 
 function createGroup() {
   
+let inputNomGroup = document.getElementById('group-name');
+let inputDescription = document.getElementById('group-description');
+let inputCurreny = document.getElementById('group-currency');
+let inputStarDate = document.getElementById(' group-start-date');
+
+
+let createGroupSubmit = document.getElementById('create-group-submit');
+
+createGroupSubmit.addEventListener( "submit" , (event) => {
+
+
+event.preventDefault()
+
+let groupFormulair = {
+
+  id : Date.now() ,
+  name :inputNomGroup.value.trim() ,
+  description : inputDescription.value.trim() ,
+   currency : inputCurreny.value.trim(),
+   startDate : inputStarDate.value.trim(),
+   closed : false  , 
+
+};
+groups.push( groupFormulair);
+displayGroups(groups)
+});
+
 }
 
 function findMemberById(id) {
