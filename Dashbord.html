@@ -37,20 +37,18 @@
           </span>
         </div>
       </div>
-
-
       <nav class="flex flex-col justify-center  ">
         <p class="text-[#7F8CAF] font-mono text-xs uppercase tracking-wider font-medium ml-1">ESPACE DE TRAVAIL </p>
         <div class="flex flex-col gap-1">
           <div class="flex item-center">
             <button id="btn-dashboard" class="flex item-center gap-2 w-full py-3  bg-white-600 text- text-[#F3F5FB] rounded-2xl  text-gray-400 
-                           hover:bg-slate-800 hover:text-gray-200
+                     hover:bg-slate-800 hover:text-gray-200
                      focus:bg-white focus:text-slate-900 focus:shadow-md
                      active:bg-white active:text-slate-900 ">
               <div>
-                <i class="fa-solid fa-border-all" style="color: white  group-hover:text-blue-400 group-focus:text-blue-500 transition-colors"></i>
+                <i class="fa-solid fa-border-all"
+                  style="color: white  group-hover:text-blue-400 group-focus:text-blue-500 transition-colors"></i>
               </div>
-  
               Tableau de bord
               <!-- <a href="Dashbord.html">Tableau de bord</a> -->
             </button>
@@ -59,9 +57,10 @@
                            hover:bg-slate-800 hover:text-gray-200
                    focus:bg-white focus:text-slate-900 focus:shadow-md
                    active:bg-white active:text-slate-900">
-             <div>
-               <i class="fa-solid fa-clipboard-user" style="color: white group-hover:text-blue-400 group-focus:text-blue-500 transition-colors"></i>
-             </div>      
+            <div>
+              <i class="fa-solid fa-clipboard-user"
+                style="color: white group-hover:text-blue-400 group-focus:text-blue-500 transition-colors"></i>
+            </div>
             Groupes &amp; membres
             <!-- <a href="groupes.html">Groupes &amp; membres</a> -->
           </button>
@@ -69,12 +68,12 @@
                            hover:bg-slate-800 hover:text-gray-200
                    focus:bg-white focus:text-slate-900 focus:shadow-md
                    active:bg-white active:text-slate-900 ">
-                   <div>
-                    
-                     <i class="fa-solid fa-list"
-                       style="color: white group-hover:text-blue-400 group-focus:text-blue-500 transition-colors"></i>
-                      </div>
-                      <span>Dépenses & soldes</span>
+            <div>
+
+              <i class="fa-solid fa-list"
+                style="color: white group-hover:text-blue-400 group-focus:text-blue-500 transition-colors"></i>
+            </div>
+            <span>Dépenses & soldes</span>
           </button>
         </div>
       </nav>
@@ -498,67 +497,36 @@
           </div>
 
           <!-- -----------------------------partiemain------------------------------------->
-          <div class="overflow-x-auto">
-            <div class="max-w-8xl mx-auto bg-white rounded-2xl shadow-sm border border-slate-100 p-8 mt-7">
+          <div id="tableu-depenses" class="overflow-x-auto">
+            <div class="max-w-8xl mx-auto bg-white rounded-2xl shadow-sm border border-slate-100 p-8 mt-7 ">
 
-              <!-------------------------------------------------Table Header ---------------------------------------------------- -->
-              <!-- <div class="flex justify-between items-start mb-6">
-                  <div>
-                    <h2 class="text-xl font-bold text-slate-900">Dépenses récentes</h2>
-                    <p class="text-xs text-slate-400 mt-1">Vos dernières activités</p>
-                  </div>
-                  <a href="groupes.html" id="btn-tout-afficher"
-                    class="text-xs font-semibold text-blue-600 flex items-center gap-1 hover:underline">
-                    voir page groups &rarr;
-
-                  </a>
-                </div> -->
-                <div class="flex items-center">
-
-                  <div class="  relative w-50 flex items-center gap-3   ">
-  
-                      <i class="fa-solid fa-magnifying-glass" style="color: rgb(116, 192, 252);"></i>
-                    <input 
-                    type="search"
-                      placeholder="rechercher une depense"
-                      class=" w-full h-10 rounded border  border-gray-200 focus:border-bleu-500 bg-white" >
-                  </div>
-                  <div class="bg-white-600 text-black px-4 py-2 rounded-lg">
-                    <select name="toutes les categories" id="Tout6categoire">
-                      <option value="toutes les categories"></option>
-                      <option value="restaurent "></option>
-                      <option value="Logement "></option>
-                      <option value=" transport"></option>
-
-                    </select>
-                  </div>
-                </div>
-
-              <table id="tableuaDafichage" class=" w-full text-left border-collapse">
+              <table id="tableuaDafichagedepens" class="w-full text-left border-collapse">
                 <thead>
                   <tr class="border-b border-slate-100 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                     <th id="description" class="pb-3 font-semibold">Description</th>
                     <th class="pb-3 font-semibold">Groupe</th>
-                    <th class="pb-3 font-semibold">Paid By</th>
+                    <th class="pb-3 font-semibold text-right pr-4">Montant</th>
+                    <th class="pb-3 font-semibold">Catégorie</th>
+                    <th class="pb-3 font-semibold">Payé par</th>
                     <th class="pb-3 font-semibold">Date</th>
-                    <th class="pb-3 font-semibold">Closed </th>
-                    <th class="pb-3 font-semibold">currency</th>
-                    <th class="pb-3 font-semibold">Actions</th>
-
                   </tr>
                 </thead>
-                <tbody id="AffichageDonner" class="divide-y divide-slate-50 text-sm text-slate-700">
+                <tbody id="AffichageDonnerdepense" class="divide-y divide-slate-50 text-sm text-slate-700">
 
-                  <!-- Row 1 -->
-                  <tr id="toutAfficher" class="hover:bg-slate-50/50 transition">
+                  <!-- Ligne 1 : Diner au restaurant -->
+                  <tr class="hover:bg-slate-50/50 transition">
                     <td class="py-4 flex items-center gap-3">
                       <div
-                        class="w-8 h-8 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center font-bold">
-                        🍽️</div>
+                        class="w-8 h-8 bg-orange-50 text-orange-600 rounded-lg flex items-center justify-center font-bold text-base">
+                      </div>
                       <span class="font-semibold text-slate-900">Diner au restaurant</span>
                     </td>
                     <td class="py-4 text-slate-500">Marrakech</td>
-                    <td class="py-4 font-bold text-slate-900">USD</td>
+                    <td class="py-4 font-bold text-slate-900 text-right pr-4">860 DH</td>
+                    <td class="py-4">
+                      <span
+                        class="px-2.5 py-1 text-xs font-medium rounded-full bg-slate-100 text-slate-600">Restaurant</span>
+                    </td>
                     <td class="py-4">
                       <div class="flex items-center gap-2">
                         <span
@@ -569,16 +537,20 @@
                     <td class="py-4 text-xs text-slate-400">18 mai 2025</td>
                   </tr>
 
-                  <!-- Row 2 -->
+                  <!-- Ligne 2 : Riad dans la médina -->
                   <tr class="hover:bg-slate-50/50 transition">
                     <td class="py-4 flex items-center gap-3">
                       <div
-                        class="w-8 h-8 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center font-bold">
-                        🏨</div>
+                        class="w-8 h-8 bg-purple-50 text-purple-600 rounded-lg flex items-center justify-center font-bold text-base">
+                      </div>
                       <span class="font-semibold text-slate-900">Riad dans la médina</span>
                     </td>
                     <td class="py-4 text-slate-500">Marrakech</td>
-                    <td class="py-4 font-bold text-slate-900"> USD</td>
+                    <td class="py-4 font-bold text-slate-900 text-right pr-4">3 200 DH</td>
+                    <td class="py-4">
+                      <span
+                        class="px-2.5 py-1 text-xs font-medium rounded-full bg-slate-100 text-slate-600">Logement</span>
+                    </td>
                     <td class="py-4">
                       <div class="flex items-center gap-2">
                         <span
@@ -591,13 +563,14 @@
 
                 </tbody>
               </table>
+
             </div>
           </div>
 
         </section>
     </div>
 
-  </main>
+    </main>
   </div>
   <script src="js/storage.js"></script>
   <script src="js/dash.js"></script>
