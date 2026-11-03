@@ -9,6 +9,7 @@ let searchBox = document.getElementById("search-box");
 let membersSection = document.getElementById("members-section");
 let formsSection = document.getElementById("forms-section");
 let editingMemberID = null;
+let selectedGroupID = null;
 
 // i add a smooth scrolling to form cards
 function scrollIntoForm() {
@@ -95,6 +96,7 @@ function selectGroup() {
 
       groupCard.classList.add("ring-2", "ring-blue-400");
 
+      selectedGroupID = Number(groupCard.dataset.id);
       displayMembers(Number(groupCard.dataset.id));
     });
   });
@@ -197,12 +199,13 @@ function deleteMember(groupID) {
       groupCard.querySelector("[data-member-count]").textContent =
         `${updatedCount} members`;
 
+      saveMembersToLS();
       displayMembers(groupID);
     });
   });
 }
 
-function editMember() {
+function editMember(groupID) {
   let editMemberBtns = memberstableBody.querySelectorAll(
     '[data-action="edit"]',
   );
@@ -245,6 +248,7 @@ function editMember() {
         memberUsernameInput,
         saveMemberBtn,
         checkboxes,
+        groupID,
       );
     });
   });
@@ -256,8 +260,9 @@ function editMemberForm(
   memberUsernameInput,
   saveMemberBtn,
   checkboxes,
+  groupID,
 ) {
-  updateMemberBtn.addEventListener("submit", function (event) {
+  updateMemberBtn.addEventListener("click", function (event) {
     event.preventDefault();
 
     let member = findMemberById(editingMemberID);
@@ -277,19 +282,20 @@ function editMemberForm(
     saveMemberBtn.classList.remove("hidden");
     updateMemberBtn.classList.add("hidden");
 
+    saveMembersToLS();
     displayMembers(groupID);
   });
 }
 
-
-function addMember(groupID) {
+function addMember() {
   let memberNameInput = document.getElementById("member-name");
   let memberUsernameInput = document.getElementById("member-username");
   let memberChkboxInput = document.getElementById("member-groups-list");
   let checkboxes = memberChkboxInput.querySelectorAll('input[type="checkbox"]');
   let saveMemberBtn = document.getElementById("save-member-button");
+  let memberForm = document.getElementById("member-form");
 
-  saveMemberBtn.addEventListener("submit", (event) => {
+  saveMemberBtn.addEventListener("click", (event) => {
     event.preventDefault();
 
     let member = {
@@ -305,47 +311,44 @@ function addMember(groupID) {
       }
     });
 
+    if (member.groups.length === 0) {
+      alert("Please select a group.");
+      return;
+    }
+
     members.push(member);
 
-    displayMembers(groupID);
+    saveMembersToLS();
+
+    displayGroups(groups);
+    displayMembers(member.groups[0]);
+
+    memberForm.reset();
   });
 }
 
-
 function createGroup() {
-  
-let inputNomGroup = document.getElementById('group-name');
-let inputDescription = document.getElementById('group-description');
-let inputCurreny = document.getElementById('group-currency');
-let inputStarDate = document.getElementById(' group-start-date');
+  let inputNomGroup = document.getElementById("group-name");
+  let inputDescription = document.getElementById("group-description");
+  let inputCurreny = document.getElementById("group-currency");
+  let inputStarDate = document.getElementById("group-start-date");
+  let createGroupForm = document.getElementById("create-group-form");
 
+  createGroupForm.addEventListener("submit", (event) => {
+    let groupFormulair = {
+      id: Date.now(),
+      name: inputNomGroup.value.trim(),
+      description: inputDescription.value.trim(),
+      currency: inputCurreny.value.trim(),
+      startDate: inputStarDate.value.trim(),
+      closed: false,
+    };
+    groups.push(groupFormulair);
 
-let createGroupSubmit = document.getElementById('create-group-submit');
-
-createGroupSubmit.addEventListener( "submit" , (event) => {
-
-
-event.preventDefault()
-
-let groupFormulair = {
-
-  id : Date.now() ,
-  name :inputNomGroup.value.trim() ,
-  description : inputDescription.value.trim() ,
-   currency : inputCurreny.value.trim(),
-   startDate : inputStarDate.value.trim(),
-   closed : false  , 
-
-};
-groups.push( groupFormulair);
-displayGroups(groups)
-});
-
-
+    saveGroupsToLS();
+    displayGroups(groups);
+  });
 }
-
-function createGroup() {}
-
 
 function findMemberById(id) {
   return members.find((item) => item.id === id);
@@ -578,7 +581,7 @@ function displayModals() {
                   <div class="flex items-center gap-2">
                   <button
                     id="update-member-button"
-                    type="submit"
+                    type="button"
                     class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-md transition-colors hidden"
                   >
                     Update Member
@@ -598,22 +601,8 @@ function displayModals() {
   memberFormHeading = document.getElementById("member-form-heading");
 }
 
-function readMembersFromLS() {
-    return JSON.parse(localStorage.getItem(members)) || [];
-}
-
-function saveMembersToLS(newMembersList) {
-    localStorage.setItem(members, JSON.stringify(newMembersList))
-}
-
-function readGroupsFromLS() {
-    return JSON.parse(localStorage.getItem(groups)) || [];
-}
-
-function saveGroupsToLS(newGroupsList) {
-    localStorage.setItem(groups, JSON.stringify(newGroupsList))
-}
-
 displayGroups(groups);
 scrollIntoForm();
 searchInput();
+createGroup();
+addMember();
