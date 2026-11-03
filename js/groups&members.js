@@ -335,6 +335,8 @@ function createGroup() {
   let createGroupForm = document.getElementById("create-group-form");
 
   createGroupForm.addEventListener("submit", (event) => {
+    event.preventDefault()
+    
     let groupFormulair = {
       id: Date.now(),
       name: inputNomGroup.value.trim(),
@@ -601,8 +603,8 @@ function displayModals() {
   memberFormHeading = document.getElementById("member-form-heading");
 }
 
-displayGroups(groups);
 scrollIntoForm();
+displayGroups(groups);
 searchInput();
 createGroup();
 addMember();
