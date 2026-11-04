@@ -790,336 +790,344 @@
                 </table>
               </div>
             </div>
-          </section>
-          <!-- Balances -->
-          <section
-            id="forms-section"
-            class="w-full flex items-stretch mt-8 gap-6"
-          >
-            <article
-              class="flex-1 min-w-0 bg-white border border-gray-200 rounded-xl shadow-sm p-6"
+
+            <!-- Balances -->
+            <section
+              id="forms-section"
+              class="w-full flex items-stretch mt-8 gap-6"
             >
-              <!-- Header -->
-              <div class="mb-5">
-                <h3 class="font-semibold text-lg text-gray-900">Balances</h3>
-                <p class="text-sm text-gray-500 mt-1">
-                  Who owes whom, after equal splits.
-                </p>
-              </div>
-
-              <!-- Overall balance -->
-              <div
-                class="flex justify-between items-center bg-emerald-50 rounded-lg p-3 mb-5"
+              <article
+                class="flex-1 min-w-0 bg-white border border-gray-200 rounded-xl shadow-sm p-6"
               >
-                <div>
-                  <span class="text-sm font-medium text-gray-900">
-                    You are owed overall
-                  </span>
-                  <p class="text-xs text-gray-500 mt-1">Across all 3 groups</p>
-                </div>
-
-                <span class="text-lg font-bold text-emerald-600">
-                  $359.00
-                </span>
-              </div>
-
-              <!-- Weekend Trip -->
-              <div class="mb-4">
-                <h4 class="text-sm font-semibold text-gray-900 mb-1">
-                  Weekend Trip
-                </h4>
-
-                <div
-                  class="flex justify-between items-center py-2 border-b border-gray-200"
-                >
-                  <span class="text-sm text-gray-700">
-                    Jamie Chen owes Alex Morgan
-                  </span>
-                  <span class="text-sm font-medium text-emerald-600"
-                    >$3.00</span
-                  >
-                </div>
-
-                <div
-                  class="flex justify-between items-center py-2 border-b border-gray-200"
-                >
-                  <span class="text-sm text-gray-700">
-                    Sam Patel owes Alex Morgan
-                  </span>
-                  <span class="text-sm font-medium text-emerald-600"
-                    >$159.00</span
-                  >
-                </div>
-
-                <div
-                  class="flex justify-between items-center py-2 border-b border-gray-200"
-                >
-                  <span class="text-sm text-gray-700">
-                    Taylor Reed owes Alex Morgan
-                  </span>
-                  <span class="text-sm font-medium text-emerald-600"
-                    >$159.00</span
-                  >
-                </div>
-              </div>
-
-              <!-- Record repayment -->
-              <button
-                type="button"
-                class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
-              >
-                <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                Record Repayment
-              </button>
-            </article>
-
-            <!-- Add Expense -->
-            <article
-              class="flex-1 min-w-0 bg-white border border-gray-200 rounded-xl shadow-sm p-5"
-            >
-              <!-- Header -->
-              <div class="flex justify-between items-center mb-5">
-                <h3 class="font-semibold text-lg text-gray-900">Add Expense</h3>
-              </div>
-
-              <form id="expense-form" class="space-y-4">
-                <!-- Description -->
-                <div class="flex flex-col gap-2">
-                  <label
-                    for="expense-description"
-                    class="text-xs font-medium text-gray-800"
-                  >
-                    Description
-                  </label>
-
-                  <input
-                    type="text"
-                    id="expense-description"
-                    name="description"
-                    placeholder="e.g. Fuel for the trip"
-                    required
-                    class="w-full h-10 border border-gray-300 rounded-md px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
-                  />
-                </div>
-
-                <!-- Group and Paid by -->
-                <div class="grid grid-cols-2 gap-3">
-                  <div class="flex flex-col gap-2">
-                    <label
-                      for="expense-group"
-                      class="text-xs font-medium text-gray-800"
-                    >
-                      Group
-                    </label>
-
-                    <select
-                      id="expense-group"
-                      name="group"
-                      required
-                      class="w-full h-9 border border-gray-300 rounded-md px-3 text-sm bg-white"
-                    >
-                      <option value="1">Weekend Trip</option>
-                      <option value="2">Apartment</option>
-                      <option value="3">Dinner Club</option>
-                    </select>
-                  </div>
-
-                  <div class="flex flex-col gap-2">
-                    <label
-                      for="expense-payer"
-                      class="text-xs font-medium text-gray-800"
-                    >
-                      Paid by
-                    </label>
-
-                    <select
-                      id="expense-payer"
-                      name="payer"
-                      required
-                      class="w-full h-9 border border-gray-300 rounded-md px-3 text-sm bg-white"
-                    >
-                      <option value="1">Alex Morgan</option>
-                      <option value="2">Jamie Chen</option>
-                      <option value="3">Sam Patel</option>
-                      <option value="4">Taylor Reed</option>
-                    </select>
-                  </div>
-                </div>
-
-                <!-- Amount and Date -->
-                <div class="grid grid-cols-2 gap-3">
-                  <div class="flex flex-col gap-2">
-                    <label
-                      for="expense-amount"
-                      class="text-xs font-medium text-gray-800"
-                    >
-                      Amount
-                    </label>
-
-                    <input
-                      type="number"
-                      id="expense-amount"
-                      name="amount"
-                      min="0.01"
-                      step="0.01"
-                      placeholder="0.00"
-                      required
-                      class="w-full h-9 border border-gray-300 rounded-md px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
-                    />
-                  </div>
-
-                  <div class="flex flex-col gap-2">
-                    <label
-                      for="expense-date"
-                      class="text-xs font-medium text-gray-800"
-                    >
-                      Date
-                    </label>
-
-                    <input
-                      type="date"
-                      id="expense-date"
-                      name="date"
-                      required
-                      class="w-full h-9 border border-gray-300 rounded-md px-3 text-sm text-gray-700"
-                    />
-                  </div>
-                </div>
-
-                <!-- Participants -->
-                <div class="flex flex-col gap-2">
-                  <div class="flex justify-between items-center">
-                    <label class="text-xs font-medium text-gray-800">
-                      Participants
-                    </label>
-
-                    <span class="text-xs text-gray-500">4 selected</span>
-                  </div>
-
-                  <div class="flex flex-wrap gap-2">
-                    <label
-                      class="flex items-center gap-2 border border-gray-200 bg-gray-50 rounded-md px-2 py-2 text-xs cursor-pointer"
-                    >
-                      <input
-                        type="checkbox"
-                        name="participants"
-                        value="1"
-                        checked
-                        class="accent-blue-600"
-                      />
-                      Alex
-                    </label>
-
-                    <label
-                      class="flex items-center gap-2 border border-gray-200 bg-gray-50 rounded-md px-2 py-2 text-xs cursor-pointer"
-                    >
-                      <input
-                        type="checkbox"
-                        name="participants"
-                        value="2"
-                        checked
-                        class="accent-blue-600"
-                      />
-                      Jamie Chen
-                    </label>
-
-                    <label
-                      class="flex items-center gap-2 border border-gray-200 bg-gray-50 rounded-md px-2 py-2 text-xs cursor-pointer"
-                    >
-                      <input
-                        type="checkbox"
-                        name="participants"
-                        value="3"
-                        checked
-                        class="accent-blue-600"
-                      />
-                      Sam Patel
-                    </label>
-
-                    <label
-                      class="flex items-center gap-2 border border-gray-200 bg-gray-50 rounded-md px-2 py-2 text-xs cursor-pointer"
-                    >
-                      <input
-                        type="checkbox"
-                        name="participants"
-                        value="4"
-                        checked
-                        class="accent-blue-600"
-                      />
-                      Taylor Reed
-                    </label>
-                  </div>
-                </div>
-
-                <!-- Split method -->
-                <div class="flex flex-col gap-2">
-                  <label class="text-xs font-medium text-gray-800">
-                    Split method
-                  </label>
-
-                  <div class="grid grid-cols-2 gap-3">
-                    <label
-                      class="flex items-center gap-2 border border-gray-200 rounded-md px-3 py-3 text-xs text-gray-700 cursor-pointer has-[:checked]:border-blue-500 has-[:checked]:bg-blue-50 has-[:checked]:text-blue-600"
-                    >
-                      <input
-                        type="radio"
-                        name="split-method"
-                        value="equal"
-                        checked
-                        class="accent-blue-600"
-                      />
-                      Equal Split
-                    </label>
-
-                    <label
-                      class="flex items-center gap-2 border border-gray-200 rounded-md px-3 py-3 text-xs text-gray-700 cursor-pointer has-[:checked]:border-blue-500 has-[:checked]:bg-blue-50 has-[:checked]:text-blue-600"
-                    >
-                      <input
-                        type="radio"
-                        name="split-method"
-                        value="custom"
-                        class="accent-blue-600"
-                      />
-                      Custom Amounts
-                    </label>
-                  </div>
-
-                  <p class="text-xs text-gray-500">
-                    The amount will be split equally between all 4 participants.
+                <!-- Header -->
+                <div class="mb-5">
+                  <h3 class="font-semibold text-lg text-gray-900">Balances</h3>
+                  <p class="text-sm text-gray-500 mt-1">
+                    Who owes whom, after equal splits.
                   </p>
                 </div>
 
-                <!-- Amount per person -->
+                <!-- Overall balance -->
                 <div
-                  class="flex justify-between items-center bg-gray-50 rounded-lg p-3"
+                  class="flex justify-between items-center bg-emerald-50 rounded-lg p-3 mb-5"
                 >
-                  <span class="text-xs text-gray-500"> Each person pays </span>
+                  <div>
+                    <span class="text-sm font-medium text-gray-900">
+                      You are owed overall
+                    </span>
+                    <p class="text-xs text-gray-500 mt-1">
+                      Across all 3 groups
+                    </p>
+                  </div>
 
-                  <span class="text-sm font-semibold text-gray-900">
-                    $0.00
+                  <span class="text-lg font-bold text-emerald-600">
+                    $359.00
                   </span>
                 </div>
 
-                <!-- Buttons -->
-                <div class="flex items-center gap-2 pt-1">
-                  <button
-                    id="save-expense-button"
-                    type="submit"
-                    class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-md transition-colors"
-                  >
-                    Save Expense
-                  </button>
+                <!-- Weekend Trip -->
+                <div class="mb-4">
+                  <h4 class="text-sm font-semibold text-gray-900 mb-1">
+                    Weekend Trip
+                  </h4>
 
-                  <button
-                    id="cancel-expense-button"
-                    type="button"
-                    class="border border-gray-300 bg-white hover:bg-gray-50 text-gray-800 text-sm font-medium px-4 py-2 rounded-md transition-colors"
+                  <div
+                    class="flex justify-between items-center py-2 border-b border-gray-200"
                   >
-                    Cancel
-                  </button>
+                    <span class="text-sm text-gray-700">
+                      Jamie Chen owes Alex Morgan
+                    </span>
+                    <span class="text-sm font-medium text-emerald-600"
+                      >$3.00</span
+                    >
+                  </div>
+
+                  <div
+                    class="flex justify-between items-center py-2 border-b border-gray-200"
+                  >
+                    <span class="text-sm text-gray-700">
+                      Sam Patel owes Alex Morgan
+                    </span>
+                    <span class="text-sm font-medium text-emerald-600"
+                      >$159.00</span
+                    >
+                  </div>
+
+                  <div
+                    class="flex justify-between items-center py-2 border-b border-gray-200"
+                  >
+                    <span class="text-sm text-gray-700">
+                      Taylor Reed owes Alex Morgan
+                    </span>
+                    <span class="text-sm font-medium text-emerald-600"
+                      >$159.00</span
+                    >
+                  </div>
                 </div>
-              </form>
-            </article>
+
+                <!-- Record repayment -->
+                <button
+                  type="button"
+                  class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+                >
+                  <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                  Record Repayment
+                </button>
+              </article>
+
+              <!-- Add Expense -->
+              <article
+                class="flex-1 min-w-0 bg-white border border-gray-200 rounded-xl shadow-sm p-5"
+              >
+                <!-- Header -->
+                <div class="flex justify-between items-center mb-5">
+                  <h3 class="font-semibold text-lg text-gray-900">
+                    Add Expense
+                  </h3>
+                </div>
+
+                <form id="expense-form" class="space-y-4">
+                  <!-- Description -->
+                  <div class="flex flex-col gap-2">
+                    <label
+                      for="expense-description"
+                      class="text-xs font-medium text-gray-800"
+                    >
+                      Description
+                    </label>
+
+                    <input
+                      type="text"
+                      id="expense-description"
+                      name="description"
+                      placeholder="e.g. Fuel for the trip"
+                      required
+                      class="w-full h-10 border border-gray-300 rounded-md px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
+                    />
+                  </div>
+
+                  <!-- Group and Paid by -->
+                  <div class="grid grid-cols-2 gap-3">
+                    <div class="flex flex-col gap-2">
+                      <label
+                        for="expense-group"
+                        class="text-xs font-medium text-gray-800"
+                      >
+                        Group
+                      </label>
+
+                      <select
+                        id="expense-group"
+                        name="group"
+                        required
+                        class="w-full h-9 border border-gray-300 rounded-md px-3 text-sm bg-white"
+                      >
+                        <option value="1">Weekend Trip</option>
+                        <option value="2">Apartment</option>
+                        <option value="3">Dinner Club</option>
+                      </select>
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                      <label
+                        for="expense-payer"
+                        class="text-xs font-medium text-gray-800"
+                      >
+                        Paid by
+                      </label>
+
+                      <select
+                        id="expense-payer"
+                        name="payer"
+                        required
+                        class="w-full h-9 border border-gray-300 rounded-md px-3 text-sm bg-white"
+                      >
+                        <option value="1">Alex Morgan</option>
+                        <option value="2">Jamie Chen</option>
+                        <option value="3">Sam Patel</option>
+                        <option value="4">Taylor Reed</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Amount and Date -->
+                  <div class="grid grid-cols-2 gap-3">
+                    <div class="flex flex-col gap-2">
+                      <label
+                        for="expense-amount"
+                        class="text-xs font-medium text-gray-800"
+                      >
+                        Amount
+                      </label>
+
+                      <input
+                        type="number"
+                        id="expense-amount"
+                        name="amount"
+                        min="0.01"
+                        step="0.01"
+                        placeholder="0.00"
+                        required
+                        class="w-full h-9 border border-gray-300 rounded-md px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
+                      />
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                      <label
+                        for="expense-date"
+                        class="text-xs font-medium text-gray-800"
+                      >
+                        Date
+                      </label>
+
+                      <input
+                        type="date"
+                        id="expense-date"
+                        name="date"
+                        required
+                        class="w-full h-9 border border-gray-300 rounded-md px-3 text-sm text-gray-700"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Participants -->
+                  <div class="flex flex-col gap-2">
+                    <div class="flex justify-between items-center">
+                      <label class="text-xs font-medium text-gray-800">
+                        Participants
+                      </label>
+
+                      <span class="text-xs text-gray-500">4 selected</span>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2">
+                      <label
+                        class="flex items-center gap-2 border border-gray-200 bg-gray-50 rounded-md px-2 py-2 text-xs cursor-pointer"
+                      >
+                        <input
+                          type="checkbox"
+                          name="participants"
+                          value="1"
+                          checked
+                          class="accent-blue-600"
+                        />
+                        Alex
+                      </label>
+
+                      <label
+                        class="flex items-center gap-2 border border-gray-200 bg-gray-50 rounded-md px-2 py-2 text-xs cursor-pointer"
+                      >
+                        <input
+                          type="checkbox"
+                          name="participants"
+                          value="2"
+                          checked
+                          class="accent-blue-600"
+                        />
+                        Jamie Chen
+                      </label>
+
+                      <label
+                        class="flex items-center gap-2 border border-gray-200 bg-gray-50 rounded-md px-2 py-2 text-xs cursor-pointer"
+                      >
+                        <input
+                          type="checkbox"
+                          name="participants"
+                          value="3"
+                          checked
+                          class="accent-blue-600"
+                        />
+                        Sam Patel
+                      </label>
+
+                      <label
+                        class="flex items-center gap-2 border border-gray-200 bg-gray-50 rounded-md px-2 py-2 text-xs cursor-pointer"
+                      >
+                        <input
+                          type="checkbox"
+                          name="participants"
+                          value="4"
+                          checked
+                          class="accent-blue-600"
+                        />
+                        Taylor Reed
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Split method -->
+                  <div class="flex flex-col gap-2">
+                    <label class="text-xs font-medium text-gray-800">
+                      Split method
+                    </label>
+
+                    <div class="grid grid-cols-2 gap-3">
+                      <label
+                        class="flex items-center gap-2 border border-gray-200 rounded-md px-3 py-3 text-xs text-gray-700 cursor-pointer has-[:checked]:border-blue-500 has-[:checked]:bg-blue-50 has-[:checked]:text-blue-600"
+                      >
+                        <input
+                          type="radio"
+                          name="split-method"
+                          value="equal"
+                          checked
+                          class="accent-blue-600"
+                        />
+                        Equal Split
+                      </label>
+
+                      <label
+                        class="flex items-center gap-2 border border-gray-200 rounded-md px-3 py-3 text-xs text-gray-700 cursor-pointer has-[:checked]:border-blue-500 has-[:checked]:bg-blue-50 has-[:checked]:text-blue-600"
+                      >
+                        <input
+                          type="radio"
+                          name="split-method"
+                          value="custom"
+                          class="accent-blue-600"
+                        />
+                        Custom Amounts
+                      </label>
+                    </div>
+
+                    <p class="text-xs text-gray-500">
+                      The amount will be split equally between all 4
+                      participants.
+                    </p>
+                  </div>
+
+                  <!-- Amount per person -->
+                  <div
+                    class="flex justify-between items-center bg-gray-50 rounded-lg p-3"
+                  >
+                    <span class="text-xs text-gray-500">
+                      Each person pays
+                    </span>
+
+                    <span class="text-sm font-semibold text-gray-900">
+                      $0.00
+                    </span>
+                  </div>
+
+                  <!-- Buttons -->
+                  <div class="flex items-center gap-2 pt-1">
+                    <button
+                      id="save-expense-button"
+                      type="submit"
+                      class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-md transition-colors"
+                    >
+                      Save Expense
+                    </button>
+
+                    <button
+                      id="cancel-expense-button"
+                      type="button"
+                      class="border border-gray-300 bg-white hover:bg-gray-50 text-gray-800 text-sm font-medium px-4 py-2 rounded-md transition-colors"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              </article>
+            </section>
           </section>
         </main>
       </div>
