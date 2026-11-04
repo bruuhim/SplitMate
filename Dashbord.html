@@ -375,292 +375,92 @@
             <!-- Closes the Dashboard content wrapper. -->
           </section>
           <section id="Groupes" class="hidden">
-            <!-- <main class="flex-1 bg-gray-100 p-8"> -->
-            <section class="flex justify-between items-center">
-              <div>
-                <h1 class="text-2xl font-bold text-gray-900">
-                  Groups &amp; Members
-                </h1>
-                <p class="text-sm text-gray-500">
-                  Manage your shared spaces and the people in them.
-                </p>
-              </div>
-
-              <button
-                id="open-create-group-button"
-                type="button"
-                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium shadow-sm transition flex items-center gap-2"
-              >
-                + Create Group
-              </button>
-            </section>
-
-            <section class="mt-8 flex justify-between items-center">
-              <div>
-                <h2 id="groups-title" class="font-semibold text-lg">
-                  Your groups ()
-                </h2>
-              </div>
-
-              <div>
-                <input
-                  type="search"
-                  id="search-box"
-                  class="w-64 h-10 border rounded-lg bg-white border-gray-200 text-gray-700 px-3 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
-                  placeholder="Search groups or members"
-                />
-              </div>
-            </section>
-
-            <!-- Groups -->
-            <section
-              id="groups-list"
-              class="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3"
-            >
-              <!-- <div
-              id="group-weekend-trip"
-              data-group-id="weekend-trip"
-              class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm flex items-center gap-4"
-            >
-              <div>
-                <img src="assets/icon/Folder.svg" alt="Folder Icon" />
-              </div>
-
-              <div>
-                <span class="font-semibold text-gray-900">Weekend Trip</span>
-                <p class="text-sm text-gray-500">4 members</p>
-              </div>
-            </div>
-
-            <div
-              id="group-apartment"
-              data-group-id="apartment"
-              class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm"
-            >
-              <div>
-                <img src="assets/icon/Folder.svg" alt="Folder Icon" />
-              </div>
-
-              <div>
-                <span>Apartment</span>
-                <p>3 members</p>
-              </div>
-            </div>
-
-            <div id="group-dinner-club" data-group-id="dinner-club">
-              <div>
-                <img src="assets/icon/Folder.svg" alt="Folder Icon" />
-              </div>
-
-              <div>
-                <span>Dinner Club</span>
-                <p>3 members</p>
-              </div>
-            </div> -->
-            </section>
-
-            <!-- Members -->
-            <section
-              id="members-section"
-              class="mt-8 bg-white border border-gray-200 rounded-xl shadow-sm flex flex-col"
-            >
-              <div
-                class="flex justify-between items-center p-6 border-b border-gray-200"
-              >
+            <main class="flex-1 bg-gray-100 p-8">
+              <section class="flex justify-between items-center">
                 <div>
-                  <h2 class="font-semibold text-lg">Members</h2>
+                  <h1 class="text-2xl font-bold text-gray-900">
+                    Groups &amp; Members
+                  </h1>
+                  <p class="text-sm text-gray-500">
+                    Manage your shared spaces and the people in them.
+                  </p>
                 </div>
+
                 <button
-                  id="add-member-button"
+                  id="open-create-group-button"
                   type="button"
-                  class="border border-gray-300 bg-white text-gray-800 text-sm font-medium px-4 py-2 rounded-md hover:bg-gray-50 transition-colors"
+                  class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium shadow-sm transition flex items-center gap-2"
                 >
-                  + Add Member
+                  + Create Group
                 </button>
-              </div>
+              </section>
 
-              <table
-                id="members-table"
-                class="w-full text-left border-collapse"
-              >
-                <thead class="bg-[#F8F9FA] text-gray-600 font-medium">
-                  <tr>
-                    <th class="py-3 px-6">Name</th>
-                    <th class="py-3 px-6">Email</th>
-                    <th class="py-3 px-6">Group</th>
-                    <th class="py-3 px-6">Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="members-table-body"></tbody>
-              </table>
-            </section>
-
-            <!-- Modals -->
-            <section
-              id="forms-section"
-              class="w-full flex items-stretch mt-8 gap-6"
-            >
-              <article
-                class="h-full flex-1 min-w-0 bg-white border border-gray-200 rounded-xl shadow-sm flex flex-col overflow-hidden p-6 gap-2"
-              >
+              <section class="mt-8 flex justify-between items-center">
                 <div>
-                  <h3
-                    id="create-group-heading"
-                    class="font-semibold text-lg mb-6"
-                  >
-                    Create group
-                  </h3>
+                  <h2 id="groups-title" class="font-semibold text-lg">
+                    Your groups (0)
+                  </h2>
                 </div>
 
-                <form id="create-group-form" class="space-y-4">
-                  <div class="flex flex-col gap-2">
-                    <label
-                      for="group-name"
-                      class="text-xs font-medium text-gray-800"
-                      >Group name</label
-                    >
-
-                    <input
-                      type="text"
-                      id="group-name"
-                      name="groupName"
-                      placeholder="e.g. Summer vacation"
-                      class="w-full h-10 border border-gray-300 rounded-md bg-white px-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
-                    />
-                  </div>
-
-                  <div class="flex flex-col gap-2">
-                    <label
-                      for="group-members"
-                      class="text-xs font-medium text-gray-800"
-                      >Members</label
-                    >
-
-                    <select
-                      id="group-members"
-                      name="members"
-                      class="w-full h-10 border border-gray-300 rounded-md bg-white px-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
-                    >
-                      <option value="" disabled selected>Select members</option>
-                      <option value="alex">Alex Morgan</option>
-                      <option value="jamie">Jamie Chen</option>
-                      <option value="sam">Sam Patel</option>
-                      <option value="taylor">Taylor Reed</option>
-                    </select>
-                  </div>
-
-                  <p class="text-xs text-gray-500">
-                    You'll be added to the group automatically.
-                  </p>
-
-                  <div class="flex items-center gap-2 pt-1">
-                    <button
-                      id="create-group-submit"
-                      type="submit"
-                      class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-md transition-colors"
-                    >
-                      Create Group
-                    </button>
-                    <button
-                      id="create-group-cancel"
-                      type="button"
-                      class="border border-gray-300 bg-white hover:bg-gray-50 text-gray-800 text-sm font-medium px-4 py-2 rounded-md transition-colors"
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                </form>
-              </article>
-
-              <article
-                class="flex-1 min-w-0 bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden p-6"
-              >
                 <div>
-                  <h3
-                    id="member-form-heading"
-                    class="font-semibold text-lg mb-6"
+                  <input
+                    type="search"
+                    id="search-box"
+                    class="w-64 h-10 border rounded-lg bg-white border-gray-200 text-gray-700 px-3 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                    placeholder="⌕ Search groups"
+                  />
+                </div>
+              </section>
+
+              <!-- Groups -->
+              <section
+                id="groups-list"
+                class="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3"
+              ></section>
+
+              <!-- Members -->
+              <section
+                id="members-section"
+                class="mt-8 bg-white border border-gray-200 rounded-xl shadow-sm flex flex-col"
+              >
+                <div
+                  class="flex justify-between items-center p-6 border-b border-gray-200"
+                >
+                  <div>
+                    <h2 class="font-semibold text-lg">Members</h2>
+                  </div>
+                  <button
+                    id="add-member-button"
+                    type="button"
+                    class="border border-gray-300 bg-white text-gray-800 text-sm font-medium px-4 py-2 rounded-md hover:bg-gray-50 transition-colors"
                   >
-                    Add / edit member
-                  </h3>
+                    + Add Member
+                  </button>
                 </div>
 
-                <form id="member-form">
-                  <div class="flex gap-4 mb-4">
-                    <div class="flex flex-col flex-1 min-w-0 gap-2">
-                      <label
-                        for="member-name"
-                        class="text-xs font-medium text-gray-800"
-                        >Full name</label
-                      >
+                <table
+                  id="members-table"
+                  class="w-full text-left border-collapse"
+                >
+                  <thead class="bg-[#F8F9FA] text-gray-600 font-medium">
+                    <tr>
+                      <th class="py-3 px-6">Name</th>
+                      <th class="py-3 px-6">Username</th>
+                      <th class="py-3 px-6">Group</th>
+                      <th class="py-3 px-6">Actions</th>
+                    </tr>
+                  </thead>
 
-                      <input
-                        type="text"
-                        id="member-name"
-                        name="fullName"
-                        placeholder="Enter full name"
-                        class="w-full h-10 border border-gray-300 rounded-md bg-white px-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
-                      />
-                    </div>
+                  <tbody id="members-table-body"></tbody>
+                </table>
+              </section>
 
-                    <div class="flex flex-col flex-1 min-w-0 gap-2">
-                      <label
-                        for="member-email"
-                        class="text-xs font-medium text-gray-800"
-                        >Email address</label
-                      >
-
-                      <input
-                        type="email"
-                        id="member-email"
-                        name="email"
-                        placeholder="name@email.com"
-                        class="w-full h-10 border border-gray-300 rounded-md bg-white px-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="flex flex-col gap-2 mb-4">
-                    <label
-                      for="member-groups"
-                      class="text-xs font-medium text-gray-800"
-                      >Groups joined</label
-                    >
-
-                    <select
-                      id="member-groups"
-                      name="groupsJoined"
-                      class="w-full h-10 border border-gray-300 rounded-md bg-white px-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-500"
-                    >
-                      <option value="" disabled selected>Select groups</option>
-                      <option value="weekend">Weekend Trip</option>
-                      <option value="apartment">Apartment</option>
-                      <option value="dinner">Dinner Club</option>
-                    </select>
-                  </div>
-
-                  <p class="text-xs text-gray-500 mb-4">
-                    Choose one or more groups for this member.
-                  </p>
-
-                  <div class="flex items-center gap-2">
-                    <button
-                      id="save-member-button"
-                      type="submit"
-                      class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-2 rounded-md transition-colors"
-                    >
-                      Save Member
-                    </button>
-                    <button
-                      id="cancel-member-button"
-                      type="button"
-                      class="border border-gray-300 bg-white hover:bg-gray-50 text-gray-800 text-sm font-medium px-4 py-2 rounded-md transition-colors"
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                </form>
-              </article>
-            </section>
+              <!-- Modals -->
+              <section
+                id="forms-section"
+                class="w-full flex items-stretch mt-8 gap-6"
+              ></section>
+            </main>
           </section>
 
           <!-- ------------------------------------section-3-de-main------------------------------------------------ -->
