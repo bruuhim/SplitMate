@@ -45,6 +45,7 @@ btnDepenses.addEventListener('click', function () {
 
 })
 
+
 const TableuaDafichage = document.getElementById("tableuaDafichage");
 
 const AffihageDonner = document.getElementById("AffichageDonner");
@@ -60,6 +61,7 @@ groups.forEach(function (group) {
         <tr id="toutAfficher" class="hover:bg-slate-50/50 transition">
             <td class="py-4 flex items-center gap-3">
                 <div
+                
                     class="w-8 h-8 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center font-bold">
                     🍽️</div>
                 <span class="font-semibold text-slate-900">${group.description}</span>
