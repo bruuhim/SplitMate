@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>SplitMate | Groupes &amp; membres</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="flex min-h-screen bg-gray-100">
+      <!-- Sidebar -->
+      <aside class="flex w-64 flex-col bg-slate-900 p-4 text-white">
+        <div>
+          <span>SplitMate</span>
+        </div>
+
+        <p>ESPACE DE TRAVAIL</p>
+
+        <nav>
+          <button type="button">
+            <i
+              class="fa-solid fa-border-all"
+              style="color: rgb(116, 192, 252)"
+            ></i>
+            <a href="Dashbord.html">Tableau de bord</a>
+          </button>
+
+          <button type="button">
+            <i
+              class="fa-solid fa-clipboard-user"
+              style="color: rgb(116, 192, 252)"
+            ></i>
+            <a href="groupes.html">Groupes &amp; membres</a>
+          </button>
+
+          <button type="button">
+            <i class="fa-solid fa-list" style="color: rgb(116, 192, 252)"></i>
+            <span>Dépenses &amp; soldes</span>
+          </button>
+        </nav>
+
+        <div>
+          <div></div>
+          <p>Voyage à Lisbonne</p>
+          <p>5 membres · 1 840 €</p>
+          <button type="button">Voir le groupe</button>
+        </div>
+
+        <div>
+          <div>
+            <span>AM</span>
+          </div>
+
+          <strong>Mon compte</strong>
+          <span>Profil personnel</span>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <div class="flex-1 flex flex-col">
+        <header
+          class="h-16 bg-white border-b flex items-center justify-between px-8 py-4"
+        >
+          <div class="invisible">
+            <p>Groups &amp; Members</p>
+          </div>
+
+          <div
+            class="flex items-center gap-2 cursor-pointer hover:bg-slate-100 p-2 rounded-lg transition-colors"
+          >
+            <div
+              class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-blue-100 text-blue-700 text-xs font-semibold mr-3 align-middle"
+            >
+              <span>AM</span>
+            </div>
+
+            <div class="flex flex-col leading-tight">
+              <p class="font-medium text-slate-900 text-sm">Mon compte</p>
+              <small class="text-[#6C757D] text-xs -mt-0.5"
+                >Espace personnel</small
+              >
+            </div>
+          </div>
+        </header>
+
+        <main class="flex-1 bg-gray-100 p-8">
+          <section class="flex justify-between items-center">
+            <div>
+              <h1 class="text-2xl font-bold text-gray-900">
+                Groups &amp; Members
+              </h1>
+              <p class="text-sm text-gray-500">
+                Manage your shared spaces and the people in them.
+              </p>
+            </div>
+
+            <button
+              id="open-create-group-button"
+              type="button"
+              class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium shadow-sm transition flex items-center gap-2"
+            >
+              + Create Group
+            </button>
+          </section>
+
+          <section class="mt-8 flex justify-between items-center">
+            <div>
+              <h2 id="groups-title" class="font-semibold text-lg">
+                Your groups (0)
+              </h2>
+            </div>
+
+            <div>
+              <input
+                type="search"
+                id="search-box"
+                class="w-64 h-10 border rounded-lg bg-white border-gray-200 text-gray-700 px-3 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                placeholder="⌕ Search groups"
+              />
+            </div>
+          </section>
+
+          <!-- Groups -->
+          <section
+            id="groups-list"
+            class="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3"
+          ></section>
+
+          <!-- Members -->
+          <section
+            id="members-section"
+            class="mt-8 bg-white border border-gray-200 rounded-xl shadow-sm flex flex-col"
+          >
+            <div
+              class="flex justify-between items-center p-6 border-b border-gray-200"
+            >
+              <div>
+                <h2 class="font-semibold text-lg">Members</h2>
+              </div>
+              <button
+                id="add-member-button"
+                type="button"
+                class="border border-gray-300 bg-white text-gray-800 text-sm font-medium px-4 py-2 rounded-md hover:bg-gray-50 transition-colors"
+              >
+                + Add Member
+              </button>
+            </div>
+
+            <table id="members-table" class="w-full text-left border-collapse">
+              <thead class="bg-[#F8F9FA] text-gray-600 font-medium">
+                <tr>
+                  <th class="py-3 px-6">Name</th>
+                  <th class="py-3 px-6">Username</th>
+                  <th class="py-3 px-6">Group</th>
+                  <th class="py-3 px-6">Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="members-table-body"></tbody>
+            </table>
+          </section>
+
+          <!-- Modals -->
+          <section
+            id="forms-section"
+            class="w-full flex items-stretch mt-8 gap-6"
+          ></section>
+        </main>
+      </div>
+    </div>
+    <script src="js/storage.js"></script>
+    <script src="js/groups&members.js"></script>
+  </body>
+</html>
