@@ -1,27 +1,24 @@
-let groupss = readGroupsFromLS()
-const tableuaDafichageDepens = document.getElementById('tableuaDafichagedepens');
-const AffichageDonnerDepense = document.getElementById('AffichageDonnerdepense');
+let groupss = readGroupsFromLS();
+const tableuaDafichageDepens = document.getElementById(
+  "tableuaDafichagedepens",
+);
+const AffichageDonnerDepense = document.getElementById(
+  "AffichageDonnerdepense",
+);
+let addExpenseBtnv2 = document.getElementById("addExpenseBtnv2");
+let formsSectionDepense = document.getElementById("forms-section-depense");
 
+const expenseGroupList = document.getElementById("expense-group");
 
-
-const expenseGroupList = document.getElementById('expense-group');
-
-expenseGroupList.addEventListener('change', function () {
-
-  groups.forEach(element => {
+expenseGroupList.addEventListener("change", function () {
+  groups.forEach((element) => {
     const groupenamelist = document.createElement("option");
 
-    groupenamelist.textContent = element.name
+    groupenamelist.textContent = element.name;
 
-
-    expenseGroupList.appendChild(groupenamelist)
-
-
-  })
-
-})
-
-
+    expenseGroupList.appendChild(groupenamelist);
+  });
+});
 
 function findidGroup(groupId) {
   for (let group of groupss) {
@@ -29,19 +26,15 @@ function findidGroup(groupId) {
       return group;
     }
   }
-  return null
+  return null;
 }
-
 
 function findMembre(memebreid) {
   for (let member of members) {
     if (member.id === memebreid) {
-
-      return member.name
+      return member.name;
     }
-
   }
-
 }
 
 //  function findmount(memebreid){
@@ -56,43 +49,34 @@ function findMembre(memebreid) {
 //  }
 
 function affichageDeDepens() {
-
-  findidGroup(depenses)
+  findidGroup(depenses);
 
   let temp = "";
 
-  let group = findidGroup
+  let group = findidGroup;
 
   depenses.forEach(function (depen) {
-    let calculMontant = depen.montant / depen.parts.length
+    let calculMontant = depen.montant / depen.parts.length;
     let nomm;
-    let descriptt
+    let descriptt;
     let group = findidGroup(depen.groupeId);
     if (group !== null) {
-      nomm = group.name
-      descriptt = group.description
+      nomm = group.name;
+      descriptt = group.description;
     }
     // findmount(depen.membreId)
 
     let findGroupName = groups.find(function (group) {
+      depen.groupeId === group.id;
+    });
 
-      depen.groupeId === group.id
-    })
-
-    let newArray = depen.parts
+    let newArray = depen.parts;
     let memersName = null;
-    newArray.forEach(element => {
-
-
-
-    }
-    )
+    newArray.forEach((element) => {});
 
     AffichageDonnerDepense.innerHTML = "";
 
-    temp +=
-
-      ` 
+    temp += ` 
                   <tr class="hover:bg-slate-50/50 transition">
                     <td class="py-4 flex items-center gap-3">
                       <div
@@ -117,43 +101,36 @@ function affichageDeDepens() {
                     <td class="py-4 text-xs text-slate-400 "> ${calculMontant}</td>
                  </tr>
 
-`
+`;
   });
 
-  AffichageDonnerDepense.innerHTML = temp
-
+  AffichageDonnerDepense.innerHTML = temp;
 }
 
-
 function formulaireDepens() {
-
   function FormuleAjouteUneDepenses() {
-
-
-    const inputexpenseTitre = document.getElementById('expense-description');
-    const Payers = document.getElementById('expense-payer');
-    const Amount = document.getElementById('expense-amount');
-    const dateExpens = document.getElementById('expense-date');
-    const Participants = document.getElementById('input[name="Participants"]:checked');
-    const expensForm = document.getElementById('form');
-    const inputexpenseGroupSelect = document.getElementById('expense-group');
+    const inputexpenseTitre = document.getElementById("expense-description");
+    const Payers = document.getElementById("expense-payer");
+    const Amount = document.getElementById("expense-amount");
+    const dateExpens = document.getElementById("expense-date");
+    const Participants = document.getElementById(
+      'input[name="Participants"]:checked',
+    );
+    const expensForm = document.getElementById("form");
+    const inputexpenseGroupSelect = document.getElementById("expense-group");
 
     const groups = readGroupsFromLS();
     groups.forEach((group) => {
-
-      const option = document.createElement("option")
+      const option = document.createElement("option");
       option.value = group.id;
       option.textContent = group.name;
-      inputexpenseGroupSelect.append(option)
-
+      inputexpenseGroupSelect.append(option);
     });
 
     expensForm.addEventListener("submit", function (event) {
-
       event.preventDefault();
 
       let objetExprns = {
-
         id: Date.now(),
         titre: inputexpenseTitre.value.trim(),
         group: inputexpenseGroupSelect.value.trim(),
@@ -162,19 +139,21 @@ function formulaireDepens() {
         date: dateExpens.value.trim(),
         Participants: Participants,
         methodeRepartition: Participants.value.trim(),
-
-
       };
 
       depenses.push(objetExprns);
-
-
-
     });
-
-
   }
-  FormuleAjouteUneDepenses()
+  FormuleAjouteUneDepenses();
 }
-affichageDeDepens()
+
+function initExpenseScroll() {
+  addExpenseBtnv2.addEventListener("click", () => {
+    formsSectionDepense.classList.remove("hidden");
+    formsSectionDepense.scrollIntoView({ behavior: "smooth" });
+  });
+}
+
+initExpenseScroll();
+affichageDeDepens();
 formulaireDepens();
