@@ -335,8 +335,8 @@ function createGroup() {
   let createGroupForm = document.getElementById("create-group-form");
 
   createGroupForm.addEventListener("submit", (event) => {
-    event.preventDefault()
-    
+    event.preventDefault();
+
     let groupFormulair = {
       id: Date.now(),
       name: inputNomGroup.value.trim(),
