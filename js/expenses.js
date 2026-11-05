@@ -119,30 +119,30 @@ function formulaireDepens() {
     const expensForm = document.getElementById("form");
     const inputexpenseGroupSelect = document.getElementById("expense-group");
 
-    const groups = readGroupsFromLS();
-    groups.forEach((group) => {
-      const option = document.createElement("option");
-      option.value = group.id;
-      option.textContent = group.name;
-      inputexpenseGroupSelect.append(option);
-    });
+    // const groups = readGroupsFromLS();
+    // groups.forEach((group) => {
+    //   const option = document.createElement("option");
+    //   option.value = group.id;
+    //   option.textContent = group.name;
+    //   inputexpenseGroupSelect.append(option);
+    // });
 
-    expensForm.addEventListener("submit", function (event) {
-      event.preventDefault();
+    // expensForm.addEventListener("submit", function (event) {
+    //   event.preventDefault();
 
-      let objetExprns = {
-        id: Date.now(),
-        titre: inputexpenseTitre.value.trim(),
-        group: inputexpenseGroupSelect.value.trim(),
-        paidby: Payers.value.trim(),
-        amount: Amount.value.value.trim(),
-        date: dateExpens.value.trim(),
-        Participants: Participants,
-        methodeRepartition: Participants.value.trim(),
-      };
+    //   let objetExprns = {
+    //     id: Date.now(),
+    //     titre: inputexpenseTitre.value.trim(),
+    //     group: inputexpenseGroupSelect.value.trim(),
+    //     paidby: Payers.value.trim(),
+    //     amount: Amount.value.value.trim(),
+    //     date: dateExpens.value.trim(),
+    //     Participants: Participants,
+    //     methodeRepartition: Participants.value.trim(),
+    //   };
 
-      depenses.push(objetExprns);
-    });
+    //   depenses.push(objetExprns);
+    // });
   }
   FormuleAjouteUneDepenses();
 }
